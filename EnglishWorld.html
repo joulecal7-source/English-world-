@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>EnglishWorld — Teacher Joule Musuwa</title>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=FREE"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; background: #0a1628; color: white; max-width: 500px; margin: 0 auto; min-height: 100vh; }
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .gold { color: #f0c040; } .muted { color: #94b8d8; } .soft { color: #c8dff0; }
+  button { font-family: Georgia, serif; cursor: pointer; }
+  input { font-family: Georgia, serif; }
+  input::placeholder { color: #4a7090; }
+
+  /* Audio Banner */
+  #audio-banner { background: linear-gradient(135deg,#7b3f00,#c86000); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 2px solid #f0c040; }
+  #audio-confirmed { background: rgba(0,200,100,0.15); border-bottom: 1px solid rgba(0,200,100,0.3); padding: 10px 16px; display: none; align-items: center; justify-content: space-between; }
+  #activate-btn { background: linear-gradient(135deg,#f0c040,#e0900a); border: none; border-radius: 12px; padding: 12px 20px; color: #0a1628; font-weight: bold; font-size: 15px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(240,192,64,0.5)} 50%{box-shadow:0 4px 28px rgba(240,192,64,0.9),0 0 0 4px rgba(240,192,64,0.2)} }
+
+  /* Header */
+  #header { background: linear-gradient(135deg,#0d2137,#1a3a5c); padding: 13px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  #lang-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 7px 12px; color: white; font-size: 13px; }
+  .badge { border-radius: 8px; padding: 2px 9px; font-size: 11px; background: rgba(240,192,64,0.18); color: #f0c040; }
+
+  /* Tabs */
+  #tabs { display: flex; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .tab-btn { flex: 1; padding: 11px 4px; background: transparent; border: none; border-bottom: 3px solid transparent; color: #6a9ab8; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-family: Georgia, serif; }
+  .tab-btn.active { background: rgba(240,192,64,0.08); border-bottom: 3px solid #f0c040; color: #f0c040; }
+  .tab-icon { font-size: 17px; }
+
+  /* Content */
+  #content { padding: 16px 15px; overflow-y: auto; height: calc(100vh - 180px); }
+
+  /* Cards */
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 18px; margin-bottom: 16px; }
+  .lesson-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 13px; padding: 14px 15px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; color: white; border: none; }
+  .lesson-item.active { background: rgba(240,192,64,0.1); border: 1px solid rgba(240,192,64,0.38); }
+
+  /* Audio player */
+  .audio-player { background: rgba(0,0,0,0.26); border-radius: 13px; padding: 15px; margin-bottom: 14px; }
+  .play-btn { background: linear-gradient(135deg,#f0c040,#e0900a); border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 18px; color: #0a1628; flex-shrink: 0; }
+  .play-btn.playing { background: rgba(240,192,64,0.18); color: #f0c040; }
+  .progress-bar { background: rgba(255,255,255,0.09); border-radius: 4px; height: 5px; margin-top: 6px; }
+  .progress-fill { background: linear-gradient(90deg,#f0c040,#e0900a); border-radius: 4px; height: 5px; width: 0%; transition: width 1s; }
+
+  /* Word row */
+  .word-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .speak-btn { background: rgba(240,192,64,0.12); border: 1px solid rgba(240,192,64,0.22); border-radius: 8px; padding: 5px 10px; color: #f0c040; font-size: 14px; flex-shrink: 0; margin-left: 8px; }
+
+  /* Section title */
+  .section-title { color: #f0c040; font-weight: bold; font-size: 13px; padding: 6px 10px; background: rgba(240,192,64,0.08); border-radius: 8px; margin-bottom: 8px; margin-top: 10px; }
+
+  /* Difficult words */
+  .diff-box { background: rgba(100,180,255,0.05); border-radius: 12px; padding: 13px; margin-bottom: 13px; border: 1px solid rgba(100,180,255,0.13); }
+  .conv-box { background: rgba(0,200,100,0.04); border-radius: 12px; padding: 13px; margin-bottom: 16px; border: 1px solid rgba(0,200,100,0.13); }
+  .q-row { padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 4px; }
+  .a-row { padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: 8px; }
+
+  /* Gold button */
+  .gold-btn { background: linear-gradient(135deg,#f0c040,#e0900a); border: none; border-radius: 12px; padding: 13px 22px; color: #0a1628; font-weight: bold; font-size: 15px; font-family: Georgia, serif; width: 100%; margin-top: 8px; }
+  .next-btn { background: rgba(255,255,255,0.07); border: none; border-radius: 12px; padding: 13px 22px; color: white; font-weight: bold; font-size: 15px; font-family: Georgia, serif; flex: 1; }
+
+  /* Chat */
+  .chat-bubble-ai { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px 16px 16px 4px; padding: 11px 14px; max-width: 86%; white-space: pre-line; font-size: 14px; line-height: 1.65; }
+  .chat-bubble-user { background: linear-gradient(135deg,#1a5080,#0d3050); border: 1px solid rgba(100,180,255,0.22); border-radius: 16px 16px 4px 16px; padding: 11px 14px; max-width: 86%; font-size: 14px; line-height: 1.65; }
+  #chat-input { flex: 1; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 12px 14px; color: white; font-size: 14px; font-family: Georgia, serif; }
+  #send-btn { background: linear-gradient(135deg,#f0c040,#e0900a); border: none; border-radius: 12px; padding: 12px 17px; color: #0a1628; font-weight: bold; font-size: 16px; }
+
+  /* Program */
+  .month-btn { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 14px 17px; color: white; text-align: left; display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; font-family: Georgia, serif; }
+</style>
+</head>
+<body>
+
+<!-- Audio Banner -->
+<div id="audio-banner">
+  <div>
+    <div style="font-weight:bold;font-size:14px;">🔊 Appuyez ici pour activer l'audio</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.85);margin-top:3px;">Requis pour entendre les leçons 🎧</div>
+  </div>
+  <button id="activate-btn" onclick="activateAudio()">🔊 Activer</button>
+</div>
+<div id="audio-confirmed">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span style="font-size:18px;">✅</span>
+    <span style="color:#00c864;font-size:13px;font-weight:bold;">Audio activé ! Tous les boutons 🔊 fonctionnent !</span>
+  </div>
+  <button onclick="speak('Hello! Audio is working perfectly!')" style="background:rgba(0,200,100,0.2);border:1px solid rgba(0,200,100,0.4);border-radius:8px;padding:5px 12px;color:#00c864;font-size:12px;font-weight:bold;">Test 🔊</button>
+</div>
+
+<!-- Header -->
+<div id="header">
+  <div>
+    <div style="display:flex;align-items:center;gap:7px;"><span style="font-size:20px;">🎓</span><span style="font-size:19px;font-weight:bold;">EnglishWorld</span></div>
+    <div style="display:flex;gap:8px;margin-top:3px;align-items:center;">
+      <span class="badge" id="trial-badge">Essai: 28 jours</span>
+      <span style="color:#6a9ab8;font-size:11px;">👨‍🏫 J. Musuwa</span>
+    </div>
+  </div>
+  <button id="lang-btn" onclick="toggleLang()">🇬🇧 EN</button>
+</div>
+
+<!-- Tabs -->
+<div id="tabs">
+  <button class="tab-btn active" onclick="switchTab('lessons')"><span class="tab-icon">📚</span><span id="tab-lessons">Leçons</span></button>
+  <button class="tab-btn" onclick="switchTab('tutor')"><span class="tab-icon">🤖</span><span id="tab-tutor">Tuteur IA</span></button>
+  <button class="tab-btn" onclick="switchTab('vocab')"><span class="tab-icon">📝</span><span id="tab-vocab">Vocabulaire</span></button>
+  <button class="tab-btn" onclick="switchTab('program')"><span class="tab-icon">📅</span><span id="tab-program">Programme</span></button>
+</div>
+
+<!-- Content -->
+<div id="content"></div>
+
+<script>
+// ==================== DATA ====================
+const lessons = [
+  { id:1, month:1, icon:"👋", title:{en:"Lesson 1: Greetings", fr:"Leçon 1 : Salutations"},
+    intro:"Salut les amis, je suis très heureux que vous me suiviez partout dans le monde ! 🌍 Notre première leçon intitulée Salutations (Greetings) commence maintenant.",
+    sections:[
+      { title:{en:"Greetings by time of day:", fr:"Salutations selon le moment :"}, words:[
+        {en:"Good morning", fr:"Bonjour (le matin 🌅)"},{en:"Good afternoon", fr:"Bon après-midi (après 12h ☀️)"},
+        {en:"Good evening", fr:"Bonsoir (le soir 🌆)"},{en:"Hello", fr:"Salut / Bonjour (général)"},
+        {en:"Hi", fr:"Salut (entre amis)"},{en:"How do you do?", fr:"Enchanté (très formel)"},
+      ]}
+    ],
+    difficult:[
+      {word:"Good", en:"Means 'Bon' or 'Bien'.", fr:"Ce mot signifie 'Bon' ou 'Bien'."},
+      {word:"Morning", en:"Means 'Matin'. Good morning = Bon matin.", fr:"Signifie 'Matin'. Good morning = Bon matin."},
+      {word:"Afternoon", en:"After (après) + Noon (midi). Time after midday.", fr:"After (après) + Noon (midi). Le temps après midi."},
+    ],
+    conversations:[
+      {ctx:{en:"Morning:",fr:"Le matin :"}, q:"Good morning, how are you?", qfr:"Bonjour, comment allez-vous ?", a:"Good morning! I am fine.", afr:"Bonjour ! Je vais bien."},
+      {ctx:{en:"Friends:",fr:"Entre amis :"}, q:"Hi!", qfr:"Salut !", a:"Hello!", afr:"Salut !"},
+    ],
+    audio:"Good morning. Good afternoon. Good evening. Hello. Hi. How do you do? Good morning how are you? I am fine. Hi! Hello!"
+  },
+  { id:2, month:1, icon:"💬", title:{en:"Lesson 2: Asking About Someone", fr:"Leçon 2 : Demander des nouvelles"},
+    intro:"Bonjour à tous ! Maintenant que nous savons saluer, nous allons apprendre à demander des nouvelles. Soyez bien attentifs ! 😊",
+    sections:[
+      { title:{en:"1. General questions:", fr:"1. Questions générales :"}, words:[
+        {en:"How are you?", fr:"Comment vas-tu ?"},{en:"I am fine, thank you", fr:"Je vais bien, merci."},
+        {en:"How are you doing?", fr:"Comment ça va ?"},{en:"I am doing well", fr:"Je vais bien."},
+        {en:"What's up?", fr:"Quoi de neuf ?"},{en:"Not much", fr:"Pas grand-chose."},
+      ]},
+      { title:{en:"2. About a specific person:", fr:"2. Pour une personne précise :"}, words:[
+        {en:"How is John?", fr:"Comment va John ?"},{en:"He is fine", fr:"Il va bien."},
+        {en:"How is your mother?", fr:"Comment va ta mère ?"},{en:"She is okay", fr:"Elle va bien."},
+      ]},
+      { title:{en:"3. Negative answers:", fr:"3. Réponses négatives :"}, words:[
+        {en:"I am not fine", fr:"Je ne vais pas bien. ☹️"},{en:"Because I am sick", fr:"Parce que je suis malade. 🤒"},
+        {en:"Because I lost my money", fr:"Parce que j'ai perdu mon argent. 💸"},
+        {en:"Don't worry", fr:"Ne t'inquiète pas."},
+      ]},
+    ],
+    difficult:[
+      {word:"Fine", en:"Means you are doing well. I am fine = Je vais bien.", fr:"Signifie que vous allez bien."},
+      {word:"What's up?", en:"Casual way to ask How are you? between friends.", fr:"Façon décontractée de demander Comment ça va ? entre amis."},
+    ],
+    conversations:[
+      {ctx:{en:"General:",fr:"Général :"}, q:"How are you?", qfr:"Comment vas-tu ?", a:"I am fine, thank you. And you?", afr:"Je vais bien, merci. Et toi ?"},
+      {ctx:{en:"Not well:",fr:"Pas bien :"}, q:"How are you?", qfr:"Comment vas-tu ?", a:"I am not fine. Because I am sick.", afr:"Je ne vais pas bien. Parce que je suis malade."},
+    ],
+    audio:"How are you? I am fine thank you. How are you doing? I am doing well. What is up? Not much. He is fine. She is okay. I am not fine. Because I am sick."
+  },
+  { id:3, month:1, icon:"👨‍👩‍👧", title:{en:"Lesson 3: Family & Professions", fr:"Leçon 3 : Famille et Professions"},
+    intro:"Bonjour chers élèves ! Aujourd'hui nous apprenons les noms de la famille et des professions. Écoutez et répétez ! 🌟",
+    sections:[
+      { title:{en:"👨‍👩‍👧 Family:", fr:"👨‍👩‍👧 La Famille :"}, words:[
+        {en:"Father", fr:"Père 👨"},{en:"Mother", fr:"Mère 👩"},{en:"Brother", fr:"Frère 👦"},
+        {en:"Sister", fr:"Sœur 👧"},{en:"Son", fr:"Fils"},{en:"Daughter", fr:"Fille"},
+        {en:"Husband", fr:"Mari 🧔"},{en:"Wife", fr:"Épouse 👱‍♀️"},
+        {en:"Grandfather", fr:"Grand-père 👴"},{en:"Grandmother", fr:"Grand-mère 👵"},
+        {en:"Uncle", fr:"Oncle"},{en:"Aunt", fr:"Tante"},{en:"Cousin", fr:"Cousin/Cousine"},
+        {en:"Nephew", fr:"Neveu"},{en:"Niece", fr:"Nièce"},
+      ]},
+      { title:{en:"💼 Professions:", fr:"💼 Les Professions :"}, words:[
+        {en:"Teacher", fr:"Enseignant 👨‍🏫"},{en:"Doctor", fr:"Médecin 🩺"},
+        {en:"Nurse", fr:"Infirmier/ière 💉"},{en:"Engineer", fr:"Ingénieur ⚙️"},
+        {en:"Lawyer", fr:"Avocat ⚖️"},{en:"Police officer", fr:"Policier 👮"},
+        {en:"Driver", fr:"Chauffeur 🚗"},{en:"Farmer", fr:"Agriculteur 🌾"},
+        {en:"Carpenter", fr:"Menuisier 🪚"},{en:"Soldier", fr:"Soldat 🎖️"},
+      ]},
+    ],
+    difficult:[
+      {word:"Parent", en:"In English 'a parent' = father OR mother (not both). Parents = les deux.", fr:"'A parent' = le père OU la mère. Parents = les deux."},
+      {word:"Sibling", en:"Means brother or sister in general.", fr:"Signifie frère ou sœur en général."},
+    ],
+    conversations:[
+      {ctx:{en:"Family:",fr:"Famille :"}, q:"Who is she?", qfr:"Qui est-elle ?", a:"She is my sister.", afr:"C'est ma sœur."},
+      {ctx:{en:"Job:",fr:"Métier :"}, q:"What do you do?", qfr:"Que fais-tu ?", a:"I am a teacher.", afr:"Je suis enseignant."},
+    ],
+    audio:"Father. Mother. Brother. Sister. Son. Daughter. Husband. Wife. Grandfather. Uncle. Aunt. Teacher. Doctor. Nurse. Engineer. Lawyer. Who is she? She is my sister. I am a teacher."
+  },
+  { id:4, month:1, icon:"👤", title:{en:"Lesson 4: Names & Introductions", fr:"Leçon 4 : Noms et Présentations"},
+    intro:"Bonjour ! Aujourd'hui nous apprenons à demander le nom de quelqu'un et à nous présenter. C'est le début de toute amitié ! 😊",
+    sections:[
+      { title:{en:"Asking names:", fr:"Demander les noms :"}, words:[
+        {en:"What is your name?", fr:"Comment t'appelles-tu ?"},{en:"My name is Joule", fr:"Mon nom est Joule."},
+        {en:"What is his name?", fr:"Quel est son nom ? (homme ♂️)"},{en:"His name is John", fr:"Son nom est John."},
+        {en:"What is her name?", fr:"Quel est son nom ? (femme ♀️)"},{en:"Her name is Mary", fr:"Son nom est Mary."},
+        {en:"Nice to meet you", fr:"Ravi de vous rencontrer."},{en:"Pleased to meet you", fr:"Enchanté(e)."},
+        {en:"May I introduce myself?", fr:"Puis-je me présenter ?"},{en:"Let me introduce my friend", fr:"Laissez-moi vous présenter mon ami."},
+      ]},
+    ],
+    difficult:[
+      {word:"His ♂️", en:"Used for 'son/sa' when owner is a man. His name is John.", fr:"Pour 'son/sa' quand le possesseur est un homme."},
+      {word:"Her ♀️", en:"Used for 'son/sa' when owner is a woman. Her name is Mary.", fr:"Pour 'son/sa' quand le possesseur est une femme."},
+    ],
+    conversations:[
+      {ctx:{en:"Meeting:",fr:"Rencontre :"}, q:"What is your name please?", qfr:"Quel est votre nom ?", a:"My name is Musuwa. And you?", afr:"Mon nom est Musuwa. Et vous ?"},
+      {ctx:{en:"Introducing:",fr:"Présenter :"}, q:"This is my brother. His name is Eric.", qfr:"Voici mon frère. Son nom est Eric.", a:"Hello Eric! Pleased to meet you.", afr:"Salut Eric ! Enchanté."},
+    ],
+    audio:"What is your name? My name is Joule. What is his name? His name is John. What is her name? Her name is Mary. Nice to meet you. Pleased to meet you. May I introduce myself?"
+  },
+  { id:5, month:1, icon:"🗣️", title:{en:"Lesson 5: Common Expressions", fr:"Leçon 5 : Expressions Usuelles"},
+    intro:"Bonjour mes amis ! Aujourd'hui nous apprenons des phrases utilisées tout le temps. Indispensables ! 👂",
+    sections:[
+      { title:{en:"1. Commands:", fr:"1. Ordres :"}, words:[
+        {en:"Come here", fr:"Viens ici."},{en:"Stand up", fr:"Lève-toi. ⬆️"},
+        {en:"Sit down", fr:"Assieds-toi. ⬇️"},{en:"Hurry up", fr:"Dépêche-toi. 🏃"},
+        {en:"Be careful", fr:"Sois prudent. ⚠️"},{en:"Be quiet", fr:"Tais-toi. 🤫"},
+        {en:"Let's go", fr:"Allons-y."},
+      ]},
+      { title:{en:"2. Feelings:", fr:"2. Sentiments :"}, words:[
+        {en:"I am sorry", fr:"Je suis désolé. 🙏"},{en:"I am tired", fr:"Je suis fatigué. 😴"},
+        {en:"I am happy", fr:"Je suis content. 😊"},{en:"I love you", fr:"Je t'aime. ❤️"},
+        {en:"God bless you", fr:"Que Dieu te bénisse. 🙏"},{en:"Good luck", fr:"Bonne chance. 🍀"},
+      ]},
+      { title:{en:"3. Advice:", fr:"3. Conseils :"}, words:[
+        {en:"Don't worry", fr:"Ne t'inquiète pas."},{en:"Don't give up", fr:"N'abandonne pas. 💪"},
+        {en:"Don't forget", fr:"N'oublie pas. 🧠"},{en:"Stay strong", fr:"Reste fort."},
+      ]},
+      { title:{en:"4. Daily life:", fr:"4. Quotidien :"}, words:[
+        {en:"I am ready", fr:"Je suis prêt."},{en:"I understand", fr:"Je comprends."},
+        {en:"Of course", fr:"Bien sûr."},{en:"Help me", fr:"Aide-moi. 🤝"},
+        {en:"Wait a minute", fr:"Attends une minute. ⏳"},{en:"I don't know", fr:"Je ne sais pas. 🤷"},
+      ]},
+    ],
+    difficult:[
+      {word:"Don't", en:"Contraction of Do not. Don't forget = Ne pas oublier.", fr:"Contraction de Do not. Don't forget = N'oublie pas."},
+      {word:"Be...", en:"To give advice on behaviour: Be careful, Be strong, Be polite.", fr:"Pour un conseil: Be careful, Be strong, Be polite."},
+    ],
+    conversations:[
+      {ctx:{en:"Class:",fr:"Classe :"}, q:"Jonas, stand up please!", qfr:"Jonas, lève-toi !", a:"Yes teacher! Of course.", afr:"Oui monsieur ! Bien sûr."},
+      {ctx:{en:"Encouragement:",fr:"Encouragement :"}, q:"Don't give up!", qfr:"N'abandonne pas !", a:"Thank you. I will stay strong.", afr:"Merci. Je vais rester fort."},
+    ],
+    audio:"Come here. Stand up. Sit down. Hurry up. Be careful. Be quiet. Let's go. I am sorry. I am tired. I am happy. I love you. God bless you. Good luck. Don't worry. Don't give up. Don't forget. I am ready. I understand. Of course. Help me."
+  },
+];
+
+const program = [
+  {month:1, icon:"🏗️", title:"Mois 1 — Les Fondations", topics:["Salutations 👋","Demander des nouvelles","Famille & Professions 💼","Se présenter 👤","Expressions Usuelles 🗣️","Lieux & Directions 📍","Verbes Irréguliers 📝","Pronoms Sujets & Objets 👤","Adieux & Prendre Congé 👋","Expressions de Temps ⏰"]},
+  {month:2, icon:"🏠", title:"Mois 2 — L'Environnement Quotidien", topics:["Le Verbe To Be 🔵","Vocabulaire de la Cuisine 👨‍🍳","Vocabulaire de l'École 🏫","Vocabulaire de l'Église ⛪","Le Marché & Supermarché 🛒","Relations Familiales ❤️","Les Articles (a, an, the)"]},
+  {month:3, icon:"⚡", title:"Mois 3 — Action et Description", topics:["Le Verbe To Have 💰","Le Verbe To Do","Adjectifs qualificatifs 🎨","Adjectifs possessifs","Adjectifs démonstratifs","Les Nombres 🔢"]},
+  {month:4, icon:"🩺", title:"Mois 4 — Communication et Santé", topics:["Prépositions & Conjonctions 🔗","Voyages & Transports ✈️","Restaurants & Hôtels 🏨","Le Corps Humain 🩺","Banque & Finances 💵","Musique & Chant 🎶"]},
+  {month:5, icon:"📖", title:"Mois 5 — Grammaire Avancée", topics:["Voix Passive & Active","Les Adverbes 🏃","Discours Rapporté","La Météo ☁️","La Géographie 🌍","Le Sport ⚽"]},
+  {month:6, icon:"👔", title:"Mois 6 — Vie Professionnelle", topics:["Le Monde du Travail 👔","Écrire une Lettre ✉️","Les Vêtements 👗","Le Monde Animal 🐾","Évaluation Finale 📝","Certificat de Niveau 1 🎓"]},
+];
+
+// ==================== STATE ====================
+let lang = "fr";
+let currentTab = "lessons";
+let currentLesson = 0;
+let audioPlaying = false;
+let audioTimer = null;
+let audioPct = 0;
+let progress = {};
+let messages = [{role:"ai", text:"🇬🇧 Hello! I'm Teacher Joule's AI assistant. Ask me anything!\n🇫🇷 Bonjour ! Je suis l'assistant IA de l'Enseignant Joule. Posez vos questions !"}];
+let expandedMonth = null;
+
+// ==================== AUDIO ====================
+function activateAudio() {
+  document.getElementById('audio-banner').style.display = 'none';
+  document.getElementById('audio-confirmed').style.display = 'flex';
+  speak("Audio activated! Welcome to EnglishWorld!");
+}
+
+function speak(text) {
+  if(!text) return;
+  // Method 1: ResponsiveVoice
+  if(window.responsiveVoice && window.responsiveVoice.voiceSupport()) {
+    window.responsiveVoice.cancel();
+    window.responsiveVoice.speak(text, "UK English Male", {rate:0.9, pitch:1, volume:1});
+    return;
+  }
+  // Method 2: Native speech synthesis
+  if(window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US"; u.rate = 0.85; u.volume = 1;
+    // Force load voices
+    const voices = window.speechSynthesis.getVoices();
+    if(voices.length > 0) {
+      const en = voices.find(v => v.lang.startsWith('en')) || voices[0];
+      u.voice = en;
+    }
+    window.speechSynthesis.speak(u);
+  }
+}
+
+// ==================== LANGUAGE ====================
+function toggleLang() {
+  lang = lang === "fr" ? "en" : "fr";
+  document.getElementById('lang-btn').textContent = lang === "fr" ? "🇬🇧 EN" : "🇫🇷 FR";
+  document.getElementById('tab-lessons').textContent = lang === "fr" ? "Leçons" : "Lessons";
+  document.getElementById('tab-tutor').textContent = lang === "fr" ? "Tuteur IA" : "AI Tutor";
+  document.getElementById('tab-vocab').textContent = lang === "fr" ? "Vocabulaire" : "Vocabulary";
+  document.getElementById('tab-program').textContent = lang === "fr" ? "Programme" : "Program";
+  renderContent();
+}
+
+// ==================== TABS ====================
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    const tabs = ['lessons','tutor','vocab','program'];
+    b.classList.toggle('active', tabs[i] === tab);
+  });
+  renderContent();
+}
+
+// ==================== RENDER ====================
+function renderContent() {
+  const c = document.getElementById('content');
+  if(currentTab === 'lessons') c.innerHTML = renderLessons();
+  else if(currentTab === 'tutor') c.innerHTML = renderTutor();
+  else if(currentTab === 'vocab') c.innerHTML = renderVocab();
+  else if(currentTab === 'program') c.innerHTML = renderProgram();
+}
+
+function renderLessons() {
+  const lesson = lessons[currentLesson];
+  const done = Object.values(progress).filter(Boolean).length;
+  let html = `
+  <div class="card">
+    <div class="muted" style="font-size:13px;margin-bottom:8px;">📊 ${lang==="fr"?"Votre Progrès":"Your Progress"} — ${done}/${lessons.length}</div>
+    <div style="display:flex;gap:6px;margin-bottom:6px;">
+      ${lessons.map((_,i)=>`<div style="flex:1;height:6px;border-radius:3px;background:${progress[i]?'linear-gradient(90deg,#f0c040,#e0900a)':'rgba(255,255,255,0.09)'}"></div>`).join('')}
+    </div>
+    <div class="gold" style="font-size:12px;">${Math.round(done/lessons.length*100)}% complete</div>
+  </div>
+  <div style="margin-bottom:16px;">
+    ${lessons.map((l,i)=>`
+    <button class="lesson-item ${i===currentLesson?'active':''}" onclick="selectLesson(${i})" style="width:100%;border:1px solid ${i===currentLesson?'rgba(240,192,64,0.38)':'rgba(255,255,255,0.07)'};border-radius:13px;">
+      <div>
+        <div style="font-weight:bold;font-size:14px;">${l.icon} ${lang==="fr"?l.title.fr:l.title.en}</div>
+        <div class="muted" style="font-size:12px;margin-top:3px;">🎧 Audio · Month ${l.month}</div>
+      </div>
+      <span style="font-size:17px;">${progress[i]?"✅":i===currentLesson?"▶":"○"}</span>
+    </button>`).join('')}
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(240,192,64,0.07),rgba(14,50,90,0.5));border:1px solid rgba(240,192,64,0.2);border-radius:20px;padding:20px;margin-bottom:14px;">
+    <!-- Teacher intro -->
+    <div style="background:rgba(0,0,0,0.22);border-radius:12px;padding:13px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.06);">
+      <div class="gold" style="font-size:12px;margin-bottom:5px;">👨‍🏫 Teacher Joule says:</div>
+      <p style="color:#c8dff0;font-size:13px;line-height:1.65;font-style:italic;">${lesson.intro}</p>
+    </div>
+
+    <h2 style="font-size:19px;margin-bottom:14px;">${lang==="fr"?lesson.title.fr:lesson.title.en}</h2>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+      <div style="display:flex;align-items:center;gap:11px;margin-bottom:8px;">
+        <button class="play-btn ${audioPlaying?'playing':''}" id="play-btn" onclick="toggleAudio()">
+          ${audioPlaying?"⏸":"▶"}
+        </button>
+        <div style="flex:1;">
+          <div style="font-size:13px;margin-bottom:5px;">${audioPlaying?(lang==="fr"?"⏸ Pause":"⏸ Pause"):(lang==="fr"?"▶ Écouter Audio":"▶ Play Audio")}</div>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:${audioPct}%"></div></div>
+          <div class="muted" style="font-size:11px;margin-top:3px;">🔊 ${Math.round(audioPct*0.2)} / 20 min</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vocabulary sections -->
+    ${lesson.sections.map(sec=>`
+    <div class="section-title">${lang==="fr"?sec.title.fr:sec.title.en}</div>
+    ${sec.words.map(w=>`
+    <div class="word-row">
+      <div>
+        <span style="font-weight:bold;font-size:15px;">${w.en}</span>
+        <span class="muted" style="font-size:13px;margin-left:10px;">→ ${w.fr}</span>
+      </div>
+      <button class="speak-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">🔊</button>
+    </div>`).join('')}
+    `).join('')}
+
+    <!-- Difficult words -->
+    <div class="diff-box" style="margin-top:14px;">
+      <div style="color:#64b4ff;font-weight:bold;font-size:13px;margin-bottom:9px;">🔍 ${lang==="fr"?"Mots Difficiles":"Difficult Words"}</div>
+      ${lesson.difficult.map(d=>`
+      <div style="margin-bottom:7px;">
+        <span class="gold" style="font-weight:bold;">${d.word}: </span>
+        <span class="soft" style="font-size:13px;">${lang==="fr"?d.fr:d.en}</span>
+      </div>`).join('')}
+    </div>
+
+    <!-- Conversations -->
+    <div class="conv-box">
+      <div style="color:#00c864;font-weight:bold;font-size:13px;margin-bottom:9px;">💬 ${lang==="fr"?"Exemples de Conversations":"Conversation Examples"}</div>
+      ${lesson.conversations.map(c=>`
+      <div style="margin-bottom:12px;">
+        <div class="muted" style="font-size:12px;margin-bottom:5px;">${lang==="fr"?c.ctx.fr:c.ctx.en}</div>
+        <div class="q-row">
+          <span style="color:#64b4ff;">Q: </span><span style="font-size:14px;">${c.q}</span>
+          <div class="muted" style="font-size:12px;">🇫🇷 ${c.qfr}</div>
+        </div>
+        <div class="a-row" style="margin-top:4px;">
+          <span class="gold">A: </span><span style="font-size:14px;">${c.a}</span>
+          <div class="muted" style="font-size:12px;">🇫🇷 ${c.afr}</div>
+        </div>
+        <button onclick="speak('${c.q.replace(/'/g,"\\'")} ${c.a.replace(/'/g,"\\'")}');" style="background:transparent;border:none;color:#6a9ab8;font-size:12px;margin-top:4px;cursor:pointer;font-family:Georgia,serif;">🔊 Listen to dialogue</button>
+      </div>`).join('')}
+    </div>
+
+    <div style="display:flex;gap:9px;">
+      <button class="gold-btn" onclick="markComplete()" style="flex:1;">${progress[currentLesson]?(lang==="fr"?"Terminé ✅":"Completed ✅"):(lang==="fr"?"Marquer Terminé ✓":"Mark Complete ✓")}</button>
+      ${currentLesson < lessons.length-1 ? `<button class="next-btn" onclick="nextLesson()">${lang==="fr"?"Leçon Suivante →":"Next Lesson →"}</button>` : ''}
+    </div>
+  </div>`;
+  return html;
+}
+
+function renderVocab() {
+  const lesson = lessons[currentLesson];
+  let html = `<h3 style="margin-bottom:14px;font-size:17px;">📝 ${lang==="fr"?"Vocabulaire":"Vocabulary"} — ${lang==="fr"?lesson.title.fr:lesson.title.en}</h3>`;
+  lesson.sections.forEach(sec => {
+    html += `<div class="section-title">${lang==="fr"?sec.title.fr:sec.title.en}</div>`;
+    sec.words.forEach(w => {
+      html += `<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:13px;padding:14px 17px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-weight:bold;font-size:17px;">${w.en}</div>
+          <div class="muted" style="font-size:14px;margin-top:3px;">🇫🇷 ${w.fr}</div>
+        </div>
+        <button class="speak-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">🔊</button>
+      </div>`;
+    });
+  });
+  return html;
+}
+
+function renderTutor() {
+  let html = `
+  <div style="background:rgba(100,180,255,0.06);border-radius:13px;padding:11px 15px;margin-bottom:13px;border:1px solid rgba(100,180,255,0.16);">
+    <div style="color:#64b4ff;font-weight:bold;font-size:14px;">🤖 AI Tutor — Teacher Joule's Assistant</div>
+    <div class="muted" style="font-size:12px;">Powered by Claude AI · Bilingue EN/FR · 24h/24</div>
+  </div>
+  <div id="chat-messages" style="display:flex;flex-direction:column;gap:9px;margin-bottom:12px;max-height:50vh;overflow-y:auto;">
+    ${messages.map(m=>`
+    <div style="display:flex;justify-content:${m.role==='user'?'flex-end':'flex-start'};">
+      <div class="${m.role==='user'?'chat-bubble-user':'chat-bubble-ai'}">${m.text.replace(/\n/g,'<br>')}
+        ${m.role==='ai'?`<br><button onclick="speak('${m.text.split('🇫🇷')[0].replace(/🇬🇧 English:/,'').replace(/'/g,"\\'").trim()}')" style="background:transparent;border:none;color:#f0c040;cursor:pointer;font-size:12px;margin-top:5px;font-family:Georgia,serif;">🔊 Listen</button>`:''}
+      </div>
+    </div>`).join('')}
+  </div>
+  <div style="display:flex;gap:8px;overflow-x:auto;margin-bottom:9px;padding-bottom:4px;">
+    ${["What is 'Good morning'?","Explain 'To be'","Give 5 common verbs","How to introduce myself?"].map(q=>`
+    <button onclick="setInput('${q}')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:5px 12px;color:#94b8d8;font-size:11px;white-space:nowrap;flex-shrink:0;font-family:Georgia,serif;">${q}</button>`).join('')}
+  </div>
+  <div style="display:flex;gap:8px;">
+    <input id="chat-input" placeholder="${lang==="fr"?"Posez une question au Tuteur IA...":"Ask Teacher Joule's AI..."}" onkeydown="if(event.key==='Enter')sendMessage()">
+    <button id="send-btn" onclick="sendMessage()">➤</button>
+  </div>`;
+  return html;
+}
+
+function renderProgram() {
+  let html = `
+  <div class="card" style="margin-bottom:16px;text-align:center;">
+    <div style="font-size:44px;margin-bottom:6px;">👨‍🏫</div>
+    <div style="font-weight:bold;font-size:17px;">Teacher Joule Musuwa</div>
+    <div class="gold" style="font-size:13px;margin-top:3px;">Enseignant d'anglais depuis 2003</div>
+    <div class="muted" style="font-size:13px;margin-top:10px;line-height:1.65;">Auteur de "Apprendre l'anglais sans enseignant" · Programme 6 mois · Certification 🎓</div>
+  </div>`;
+  program.forEach(m => {
+    html += `
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;margin-bottom:9px;overflow:hidden;">
+      <button class="month-btn" onclick="toggleMonth(${m.month})">
+        <div>
+          <div class="gold" style="font-size:11px;font-weight:bold;">MOIS ${m.month}</div>
+          <div style="font-size:15px;margin-top:2px;">${m.icon} ${m.title}</div>
+        </div>
+        <span class="muted" style="font-size:17px;">${expandedMonth===m.month?"▲":"▼"}</span>
+      </button>
+      ${expandedMonth===m.month?`<div style="padding:0 17px 14px;border-top:1px solid rgba(255,255,255,0.05);">
+        ${m.topics.map(tp=>`<div style="padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);color:#c8dff0;font-size:13px;display:flex;gap:8px;"><span class="gold">•</span>${tp}</div>`).join('')}
+      </div>`:''}
+    </div>`;
+  });
+  html += `<div style="background:linear-gradient(135deg,rgba(240,192,64,0.09),rgba(14,50,90,0.5));border:1px solid rgba(240,192,64,0.22);border-radius:16px;padding:20px;text-align:center;margin-top:6px;">
+    <div style="font-size:46px;margin-bottom:6px;">🎓</div>
+    <div class="gold" style="font-weight:bold;font-size:16px;">Certificat de Réussite</div>
+    <div class="muted" style="font-size:13px;margin-top:8px;">Complétez les 6 mois pour obtenir votre certificat de Teacher Joule Musuwa</div>
+  </div>`;
+  return html;
+}
+
+// ==================== ACTIONS ====================
+function selectLesson(i) {
+  currentLesson = i;
+  audioPlaying = false;
+  audioPct = 0;
+  clearInterval(audioTimer);
+  if(window.responsiveVoice) window.responsiveVoice.cancel();
+  else if(window.speechSynthesis) window.speechSynthesis.cancel();
+  renderContent();
+}
+
+function toggleAudio() {
+  audioPlaying = !audioPlaying;
+  if(audioPlaying) {
+    speak(lessons[currentLesson].audio);
+    audioTimer = setInterval(() => {
+      audioPct = Math.min(100, audioPct + 0.06);
+      const fill = document.getElementById('progress-fill');
+      if(fill) fill.style.width = audioPct + '%';
+      if(audioPct >= 100) { audioPlaying = false; clearInterval(audioTimer); }
+    }, 1000);
+  } else {
+    clearInterval(audioTimer);
+    if(window.responsiveVoice) window.responsiveVoice.cancel();
+    else if(window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+  document.getElementById('play-btn').innerHTML = audioPlaying ? "⏸" : "▶";
+  document.getElementById('play-btn').className = audioPlaying ? "play-btn playing" : "play-btn";
+}
+
+function markComplete() {
+  progress[currentLesson] = true;
+  renderContent();
+}
+
+function nextLesson() {
+  if(currentLesson < lessons.length - 1) {
+    currentLesson++;
+    audioPlaying = false; audioPct = 0;
+    clearInterval(audioTimer);
+    renderContent();
+  }
+}
+
+function toggleMonth(m) {
+  expandedMonth = expandedMonth === m ? null : m;
+  renderContent();
+}
+
+function setInput(text) {
+  document.getElementById('chat-input').value = text;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+  messages.push({role:'user', text});
+  input.value = '';
+  renderContent();
+  setTimeout(() => {
+    const cm = document.getElementById('chat-messages');
+    if(cm) cm.scrollTop = cm.scrollHeight;
+  }, 50);
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        model:"claude-sonnet-4-20250514", max_tokens:800,
+        system:`You are Teacher Joule Musuwa's AI English tutor. Teaching English since 2003. Always respond in BOTH English and French:\n🇬🇧 English: [answer]\n🇫🇷 Français: [answer]\nBe warm, clear, encouraging. End with "Bravo! Keep going! / Continuez !"`,
+        messages: messages.filter(m=>m.role==='user'||m.role==='assistant').map(m=>({role:m.role==='ai'?'assistant':m.role, content:m.text}))
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "🇬🇧 Error.\n🇫🇷 Erreur.";
+    messages.push({role:'ai', text:reply});
+    const enPart = reply.split('🇫🇷')[0].replace('🇬🇧 English:','').trim();
+    speak(enPart);
+  } catch(e) {
+    messages.push({role:'ai', text:"🇬🇧 Connection error. Please try again.\n🇫🇷 Erreur de connexion. Réessayez."});
+  }
+  renderContent();
+  setTimeout(() => {
+    const cm = document.getElementById('chat-messages');
+    if(cm) cm.scrollTop = cm.scrollHeight;
+  }, 100);
+}
+
+// ==================== INIT ====================
+renderContent();
+// Load voices for speech synthesis
+if(window.speechSynthesis) window.speechSynthesis.getVoices();
+window.speechSynthesis && window.addEventListener('load', () => window.speechSynthesis.getVoices());
+</script>
+</body>
+</html>
