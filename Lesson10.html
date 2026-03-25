@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lesson 10 - Time Expressions</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#f0f4ff;color:#1e293b;}
+header{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:20px 14px;text-align:center;}
+header h1{font-size:22px;font-weight:900;margin-bottom:6px;}
+.badge{display:inline-block;background:rgba(255,255,255,0.25);color:#fff;font-size:11px;font-weight:bold;padding:3px 12px;border-radius:20px;margin-bottom:8px;}
+.teacher{font-size:12px;background:rgba(255,255,255,0.2);display:inline-block;padding:3px 12px;border-radius:20px;margin-bottom:12px;}
+.audio-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.7);color:#fff;padding:10px 20px;border-radius:50px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:10px;}
+.prog{background:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.bar{flex:1;height:7px;background:#e2e8f0;border-radius:99px;overflow:hidden;}
+.fill{height:100%;background:linear-gradient(90deg,#1a73e8,#34a853);border-radius:99px;}
+main{padding:12px;display:flex;flex-direction:column;gap:14px;max-width:700px;margin:0 auto;}
+.card{background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,0.08);overflow:hidden;}
+.ch{padding:13px 16px;font-weight:bold;font-size:14px;color:#fff;}
+.blue{background:linear-gradient(135deg,#1a73e8,#4f8ef7);}
+.green{background:linear-gradient(135deg,#34a853,#52c97a);}
+.orange{background:linear-gradient(135deg,#f9ab00,#fbc634);}
+.purple{background:linear-gradient(135deg,#7c3aed,#a78bfa);}
+.red{background:linear-gradient(135deg,#e53935,#ef5350);}
+.teal{background:linear-gradient(135deg,#0891b2,#38bdf8);}
+.pink{background:linear-gradient(135deg,#db2777,#f472b6);}
+.indigo{background:linear-gradient(135deg,#4338ca,#818cf8);}
+.lime{background:linear-gradient(135deg,#65a30d,#a3e635);}
+.amber{background:linear-gradient(135deg,#b45309,#fbbf24);}
+.pbox{padding:10px 12px;}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 6px;border-bottom:1px solid #f0f4ff;}
+.row:last-child{border-bottom:none;}
+.row-text{flex:1;}
+.en{font-weight:bold;font-size:13px;color:#1e40af;}
+.fr{font-size:11px;color:#64748b;font-style:italic;margin-top:2px;}
+.tts-btn{width:28px;height:28px;border-radius:50%;background:#1a73e8;color:#fff;border:none;cursor:pointer;font-size:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.tts-btn:hover{background:#0d47a1;}
+.tts-btn.speaking{background:#e53935;}
+.aend{text-align:center;padding:16px;background:linear-gradient(135deg,#eff6ff,#f0fdf4);border-top:1px solid #e0f2fe;}
+.abig{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;border:none;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:bold;cursor:pointer;}
+.abig.stop{background:linear-gradient(135deg,#e53935,#c62828);}
+.navbtns{display:flex;gap:10px;padding:0 12px;margin-bottom:14px;}
+.nb2{flex:1;text-align:center;padding:12px;border-radius:10px;font-weight:bold;font-size:13px;text-decoration:none;border:2px solid #1a73e8;color:#1a73e8;display:block;}
+.nb2.nxt{background:#1a73e8;color:#fff;}
+footer{text-align:center;padding:14px;font-size:11px;color:#64748b;border-top:1px solid #e2e8f0;margin-top:8px;}
+</style>
+</head>
+<body>
+<header>
+<div class="badge">LESSON 10 OF 15</div>
+<h1>Time Expressions &#x23F0;</h1>
+<p>Les expressions de temps en anglais</p>
+<div class="teacher">Teacher Joule bin Musuwa &bull; EnglishWorld</div><br>
+<button class="audio-pill" id="btnTop" onclick="togglePlayAll()">&#9654; ECOUTER TOUTE LA LECON</button>
+</header>
+<div class="prog">
+<span style="font-size:12px;font-weight:bold;color:#1a73e8">10/15</span>
+<div class="bar"><div class="fill" style="width:67%"></div></div>
+<span style="font-size:12px;font-weight:bold;color:#34a853">67%</span>
+</div>
+<main>
+<div class="card"><div class="ch blue">&#x2600; 1. Les moments de la journee</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">Now</div><div class="fr">Maintenant</div></div><button class="tts-btn" onclick="say('Now',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Today</div><div class="fr">Aujourd hui</div></div><button class="tts-btn" onclick="say('Today',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Tonight</div><div class="fr">Ce soir / Cette nuit</div></div><button class="tts-btn" onclick="say('Tonight',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Yesterday</div><div class="fr">Hier</div></div><button class="tts-btn" onclick="say('Yesterday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Tomorrow</div><div class="fr">Demain</div></div><button class="tts-btn" onclick="say('Tomorrow',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Morning</div><div class="fr">Le matin</div></div><button class="tts-btn" onclick="say('Morning',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Noon</div><div class="fr">Midi</div></div><button class="tts-btn" onclick="say('Noon',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Afternoon</div><div class="fr">L apres-midi</div></div><button class="tts-btn" onclick="say('Afternoon',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Evening</div><div class="fr">Le soir</div></div><button class="tts-btn" onclick="say('Evening',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Night</div><div class="fr">La nuit</div></div><button class="tts-btn" onclick="say('Night',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Midnight</div><div class="fr">Minuit</div></div><button class="tts-btn" onclick="say('Midnight',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">The day before yesterday</div><div class="fr">Avant-hier</div></div><button class="tts-btn" onclick="say('The day before yesterday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">The day after tomorrow</div><div class="fr">Apres-demain</div></div><button class="tts-btn" onclick="say('The day after tomorrow',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch green">&#x1F504; 2. Ordre chronologique</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">Before</div><div class="fr">Avant</div></div><button class="tts-btn" onclick="say('Before',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">After</div><div class="fr">Apres</div></div><button class="tts-btn" onclick="say('After',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Then</div><div class="fr">Ensuite / Puis</div></div><button class="tts-btn" onclick="say('Then',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Later</div><div class="fr">Plus tard</div></div><button class="tts-btn" onclick="say('Later',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Later on</div><div class="fr">Par la suite</div></div><button class="tts-btn" onclick="say('Later on',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Early</div><div class="fr">Tot</div></div><button class="tts-btn" onclick="say('Early',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Late</div><div class="fr">Tard</div></div><button class="tts-btn" onclick="say('Late',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Soon</div><div class="fr">Bientot</div></div><button class="tts-btn" onclick="say('Soon',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Immediately</div><div class="fr">Immediatement</div></div><button class="tts-btn" onclick="say('Immediately',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Right now</div><div class="fr">Tout de suite</div></div><button class="tts-btn" onclick="say('Right now',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch orange">&#x1F4C5; 3. Les periodes et cycles</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">Week</div><div class="fr">Semaine</div></div><button class="tts-btn" onclick="say('Week',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Month</div><div class="fr">Mois</div></div><button class="tts-btn" onclick="say('Month',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Year</div><div class="fr">Annee</div></div><button class="tts-btn" onclick="say('Year',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Last week</div><div class="fr">La semaine derniere</div></div><button class="tts-btn" onclick="say('Last week',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Next week</div><div class="fr">La semaine prochaine</div></div><button class="tts-btn" onclick="say('Next week',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Last month</div><div class="fr">Le mois dernier</div></div><button class="tts-btn" onclick="say('Last month',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Next month</div><div class="fr">Le mois prochain</div></div><button class="tts-btn" onclick="say('Next month',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Last year</div><div class="fr">L annee derniere</div></div><button class="tts-btn" onclick="say('Last year',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Next year</div><div class="fr">L annee prochaine</div></div><button class="tts-btn" onclick="say('Next year',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">A decade</div><div class="fr">Une decennie (10 ans)</div></div><button class="tts-btn" onclick="say('A decade',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">A century</div><div class="fr">Un siecle (100 ans)</div></div><button class="tts-btn" onclick="say('A century',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch purple">&#x1F552; 4. La frequence</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">Always</div><div class="fr">Toujours</div></div><button class="tts-btn" onclick="say('Always',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Often</div><div class="fr">Souvent</div></div><button class="tts-btn" onclick="say('Often',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Sometimes</div><div class="fr">Parfois</div></div><button class="tts-btn" onclick="say('Sometimes',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Rarely</div><div class="fr">Rarement</div></div><button class="tts-btn" onclick="say('Rarely',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Never</div><div class="fr">Jamais</div></div><button class="tts-btn" onclick="say('Never',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Every day</div><div class="fr">Chaque jour</div></div><button class="tts-btn" onclick="say('Every day',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Every week</div><div class="fr">Chaque semaine</div></div><button class="tts-btn" onclick="say('Every week',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Daily</div><div class="fr">Quotidiennement</div></div><button class="tts-btn" onclick="say('Daily',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Weekly</div><div class="fr">Hebdomadairement</div></div><button class="tts-btn" onclick="say('Weekly',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Monthly</div><div class="fr">Mensuellement</div></div><button class="tts-btn" onclick="say('Monthly',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Yearly</div><div class="fr">Annuellement</div></div><button class="tts-btn" onclick="say('Yearly',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch teal">&#x1F5D3; 5. Les jours de la semaine</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">Monday</div><div class="fr">Lundi</div></div><button class="tts-btn" onclick="say('Monday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Tuesday</div><div class="fr">Mardi</div></div><button class="tts-btn" onclick="say('Tuesday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Wednesday</div><div class="fr">Mercredi</div></div><button class="tts-btn" onclick="say('Wednesday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Thursday</div><div class="fr">Jeudi</div></div><button class="tts-btn" onclick="say('Thursday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Friday</div><div class="fr">Vendredi</div></div><button class="tts-btn" onclick="say('Friday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Saturday</div><div class="fr">Samedi</div></div><button class="tts-btn" onclick="say('Saturday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Sunday</div><div class="fr">Dimanche</div></div><button class="tts-btn" onclick="say('Sunday',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch red">&#x1F342; 6. Les mois de l annee</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">January</div><div class="fr">Janvier</div></div><button class="tts-btn" onclick="say('January',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">February</div><div class="fr">Fevrier</div></div><button class="tts-btn" onclick="say('February',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">March</div><div class="fr">Mars</div></div><button class="tts-btn" onclick="say('March',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">April</div><div class="fr">Avril</div></div><button class="tts-btn" onclick="say('April',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">May</div><div class="fr">Mai</div></div><button class="tts-btn" onclick="say('May',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">June</div><div class="fr">Juin</div></div><button class="tts-btn" onclick="say('June',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">July</div><div class="fr">Juillet</div></div><button class="tts-btn" onclick="say('July',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">August</div><div class="fr">Aout</div></div><button class="tts-btn" onclick="say('August',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">September</div><div class="fr">Septembre</div></div><button class="tts-btn" onclick="say('September',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">October</div><div class="fr">Octobre</div></div><button class="tts-btn" onclick="say('October',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">November</div><div class="fr">Novembre</div></div><button class="tts-btn" onclick="say('November',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">December</div><div class="fr">Decembre</div></div><button class="tts-btn" onclick="say('December',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch indigo">&#x23F3; 7. Expressions de duree et changement</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">From now on</div><div class="fr">Dorenavant</div></div><button class="tts-btn" onclick="say('From now on',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Since yesterday</div><div class="fr">Depuis hier</div></div><button class="tts-btn" onclick="say('Since yesterday',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">For two hours</div><div class="fr">Pendant deux heures</div></div><button class="tts-btn" onclick="say('For two hours',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Until</div><div class="fr">Jusqu a</div></div><button class="tts-btn" onclick="say('Until',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Forever</div><div class="fr">Pour toujours</div></div><button class="tts-btn" onclick="say('Forever',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Nowadays</div><div class="fr">De nos jours</div></div><button class="tts-btn" onclick="say('Nowadays',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Once upon a time</div><div class="fr">Il etait une fois</div></div><button class="tts-btn" onclick="say('Once upon a time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">In the former time</div><div class="fr">Autrefois / Jadis</div></div><button class="tts-btn" onclick="say('In the former time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">In the meantime</div><div class="fr">Entre-temps</div></div><button class="tts-btn" onclick="say('In the meantime',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">At the same time</div><div class="fr">En meme temps</div></div><button class="tts-btn" onclick="say('At the same time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">When</div><div class="fr">Quand</div></div><button class="tts-btn" onclick="say('When',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Whenever</div><div class="fr">N importe quand</div></div><button class="tts-btn" onclick="say('Whenever',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch pink">&#x23F3; 8. Duree et rythme</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">For a while</div><div class="fr">Pendant un moment</div></div><button class="tts-btn" onclick="say('For a while',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Briefly</div><div class="fr">Brievement</div></div><button class="tts-btn" onclick="say('Briefly',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">In the long run</div><div class="fr">A long terme</div></div><button class="tts-btn" onclick="say('In the long run',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">In the short term</div><div class="fr">A court terme</div></div><button class="tts-btn" onclick="say('In the short term',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">All day long</div><div class="fr">Toute la journee</div></div><button class="tts-btn" onclick="say('All day long',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">From time to time</div><div class="fr">De temps en temps</div></div><button class="tts-btn" onclick="say('From time to time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Once in a blue moon</div><div class="fr">Tres rarement</div></div><button class="tts-btn" onclick="say('Once in a blue moon',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">At times</div><div class="fr">Parfois / Par moments</div></div><button class="tts-btn" onclick="say('At times',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Time after time</div><div class="fr">Maintes et maintes fois</div></div><button class="tts-btn" onclick="say('Time after time',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch lime">&#x1F680; 9. Urgence et anticipation</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">In advance</div><div class="fr">A l avance</div></div><button class="tts-btn" onclick="say('In advance',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Ahead of time</div><div class="fr">En avance</div></div><button class="tts-btn" onclick="say('Ahead of time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">On time</div><div class="fr">A l heure</div></div><button class="tts-btn" onclick="say('On time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">In time</div><div class="fr">Juste a temps</div></div><button class="tts-btn" onclick="say('In time',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">At the last minute</div><div class="fr">A la derniere minute</div></div><button class="tts-btn" onclick="say('At the last minute',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Sooner or later</div><div class="fr">Tot ou tard</div></div><button class="tts-btn" onclick="say('Sooner or later',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch amber">&#x1F5E3; 10. Expressions idiomatiques</div><div class="pbox">
+<div class="row"><div class="row-text"><div class="en">For ages</div><div class="fr">Depuis une eternite</div></div><button class="tts-btn" onclick="say('For ages',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">A long time ago</div><div class="fr">Il y a longtemps</div></div><button class="tts-btn" onclick="say('A long time ago',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Just now</div><div class="fr">A l instant</div></div><button class="tts-btn" onclick="say('Just now',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Anytime</div><div class="fr">N importe quand</div></div><button class="tts-btn" onclick="say('Anytime',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">The other day</div><div class="fr">L autre jour</div></div><button class="tts-btn" onclick="say('The other day',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Currently</div><div class="fr">Actuellement</div></div><button class="tts-btn" onclick="say('Currently',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en">Eventually</div><div class="fr">Finalement / A la fin</div></div><button class="tts-btn" onclick="say('Eventually',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="aend"><p style="font-size:12px;color:#64748b;margin-bottom:10px;">Explication complete par Teacher Joule bin Musuwa</p><button class="abig" id="btnBot" onclick="togglePlayAll()">&#9654; ECOUTER LA LECON 10 (20 min)</button></div></div>
+<div class="navbtns"><a href="Lesson9.html" class="nb2">&#8592; Lecon 9</a><a href="Lesson11.html" class="nb2 nxt">Lecon 11 &#8594;</a></div>
+</main>
+<footer>2026 EnglishWorld - Teacher Joule bin Musuwa</footer>
+<script>
+var tts=(typeof window!=='undefined'&&'speechSynthesis' in window);
+var all=['Now','Today','Tonight','Yesterday','Tomorrow','Morning','Noon','Afternoon','Evening','Night','Midnight','The day before yesterday','The day after tomorrow','Before','After','Then','Later','Later on','Early','Late','Soon','Immediately','Right now','Week','Month','Year','Last week','Next week','Last month','Next month','Last year','Next year','A decade','A century','Always','Often','Sometimes','Rarely','Never','Every day','Every week','Daily','Weekly','Monthly','Yearly','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','January','February','March','April','May','June','July','August','September','October','November','December','From now on','Since yesterday','For two hours','Until','Forever','Nowadays','Once upon a time','In the former time','In the meantime','At the same time','When','Whenever','For a while','Briefly','In the long run','In the short term','All day long','From time to time','Once in a blue moon','At times','Time after time','In advance','Ahead of time','On time','In time','At the last minute','Sooner or later','For ages','A long time ago','Just now','Anytime','The other day','Currently','Eventually'];
+var playing=false,qi=0;
+function getVoice(){if(!tts)return null;var vs=window.speechSynthesis.getVoices();for(var i=0;i<vs.length;i++){if(vs[i].lang==='en-US')return vs[i];}for(var i=0;i<vs.length;i++){if(vs[i].lang.indexOf('en')===0)return vs[i];}return null;}
+function clearBtns(){var bs=document.querySelectorAll('.tts-btn.speaking');for(var i=0;i<bs.length;i++){bs[i].classList.remove('speaking');bs[i].innerHTML='&#128266;';}}
+function say(text,btn){if(!tts)return;if(btn&&btn.classList.contains('speaking')){window.speechSynthesis.cancel();btn.classList.remove('speaking');btn.innerHTML='&#128266;';if(playing)stopAll();return;}if(playing)stopAll();window.speechSynthesis.cancel();clearBtns();var u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.87;u.pitch=1.0;var v=getVoice();if(v)u.voice=v;if(btn){btn.classList.add('speaking');btn.innerHTML='&#9209;';u.onend=function(){btn.classList.remove('speaking');btn.innerHTML='&#128266;';};u.onerror=function(){btn.classList.remove('speaking');btn.innerHTML='&#128266;';};}window.speechSynthesis.speak(u);}
+function togglePlayAll(){if(!tts)return;if(playing){stopAll();return;}playing=true;qi=0;document.getElementById('btnTop').innerHTML='&#9209; ARRETER';document.getElementById('btnTop').classList.add('stop');document.getElementById('btnBot').innerHTML='&#9209; ARRETER';document.getElementById('btnBot').classList.add('stop');playNext();}
+function playNext(){if(!playing||qi>=all.length){stopAll();return;}var u=new SpeechSynthesisUtterance(all[qi]);qi++;u.lang='en-US';u.rate=0.87;u.pitch=1.0;var v=getVoice();if(v)u.voice=v;u.onend=function(){setTimeout(playNext,300);};u.onerror=function(){setTimeout(playNext,300);};window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
+function stopAll(){playing=false;if(tts)window.speechSynthesis.cancel();clearBtns();document.getElementById('btnTop').innerHTML='&#9654; ECOUTER TOUTE LA LECON';document.getElementById('btnTop').classList.remove('stop');document.getElementById('btnBot').innerHTML='&#9654; ECOUTER LA LECON 10 (20 min)';document.getElementById('btnBot').classList.remove('stop');}
+if(tts&&window.speechSynthesis.onvoiceschanged!==undefined){window.speechSynthesis.onvoiceschanged=function(){};}
+</script>
+</body>
+</html>
