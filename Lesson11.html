@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lesson 11 - Le Verbe To Be</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#f0f4ff;color:#1e293b;}
+header{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:20px 14px;text-align:center;}
+header h1{font-size:22px;font-weight:900;margin-bottom:6px;}
+.badge{display:inline-block;background:rgba(255,255,255,0.25);color:#fff;font-size:11px;font-weight:bold;padding:3px 12px;border-radius:20px;margin-bottom:8px;}
+.teacher{font-size:12px;background:rgba(255,255,255,0.2);display:inline-block;padding:3px 12px;border-radius:20px;margin-bottom:12px;}
+.audio-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.7);color:#fff;padding:10px 20px;border-radius:50px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:10px;}
+.prog{background:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.bar{flex:1;height:7px;background:#e2e8f0;border-radius:99px;overflow:hidden;}
+.fill{height:100%;background:linear-gradient(90deg,#1a73e8,#34a853);border-radius:99px;}
+main{padding:12px;display:flex;flex-direction:column;gap:14px;max-width:700px;margin:0 auto;}
+.card{background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,0.08);overflow:hidden;}
+.ch{padding:13px 16px;font-weight:bold;font-size:14px;color:#fff;}
+.blue{background:linear-gradient(135deg,#1a73e8,#4f8ef7);}
+.green{background:linear-gradient(135deg,#34a853,#52c97a);}
+.orange{background:linear-gradient(135deg,#f9ab00,#fbc634);}
+.purple{background:linear-gradient(135deg,#7c3aed,#a78bfa);}
+.red{background:linear-gradient(135deg,#e53935,#ef5350);}
+.teal{background:linear-gradient(135deg,#0891b2,#38bdf8);}
+.indigo{background:linear-gradient(135deg,#4338ca,#818cf8);}
+.pbox{padding:10px 12px;}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 6px;border-bottom:1px solid #f0f4ff;}
+.row:last-child{border-bottom:none;}
+.row-text{flex:1;}
+.num{display:inline-block;width:20px;height:20px;background:#1a73e8;color:#fff;border-radius:50%;font-size:10px;font-weight:bold;text-align:center;line-height:20px;margin-right:6px;flex-shrink:0;}
+.en{font-weight:bold;font-size:13px;color:#1e40af;display:flex;align-items:center;gap:4px;}
+.fr{font-size:11px;color:#64748b;font-style:italic;margin-top:3px;padding-left:26px;}
+.tts-btn{width:28px;height:28px;border-radius:50%;background:#1a73e8;color:#fff;border:none;cursor:pointer;font-size:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.tts-btn:hover{background:#0d47a1;}
+.tts-btn.speaking{background:#e53935;}
+.rule-box{background:#eff6ff;border-left:4px solid #1a73e8;border-radius:8px;padding:10px 13px;margin:10px 12px;font-size:12px;line-height:1.7;color:#1e3a8a;}
+.rule-box strong{color:#0d47a1;}
+.tip{background:#ecfdf5;border-left:4px solid #34a853;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.6;color:#14532d;margin:0 12px 12px;}
+.aend{text-align:center;padding:16px;background:linear-gradient(135deg,#eff6ff,#f0fdf4);border-top:1px solid #e0f2fe;}
+.abig{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;border:none;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:bold;cursor:pointer;}
+.abig.stop{background:linear-gradient(135deg,#e53935,#c62828);}
+.navbtns{display:flex;gap:10px;padding:0 12px;margin-bottom:14px;}
+.nb2{flex:1;text-align:center;padding:12px;border-radius:10px;font-weight:bold;font-size:13px;text-decoration:none;border:2px solid #1a73e8;color:#1a73e8;display:block;}
+.nb2.nxt{background:#1a73e8;color:#fff;}
+footer{text-align:center;padding:14px;font-size:11px;color:#64748b;border-top:1px solid #e2e8f0;margin-top:8px;}
+</style>
+</head>
+<body>
+<header>
+<div class="badge">LESSON 11 OF 15</div>
+<h1>Le Verbe "To Be" &#x1F4D6;</h1>
+<p>Toutes les formes — Present, Passe, Continu</p>
+<div class="teacher">Teacher Joule bin Musuwa &bull; EnglishWorld</div><br>
+<button class="audio-pill" id="btnTop" onclick="togglePlayAll()">&#9654; ECOUTER TOUTE LA LECON</button>
+</header>
+<div class="prog">
+<span style="font-size:12px;font-weight:bold;color:#1a73e8">11/15</span>
+<div class="bar"><div class="fill" style="width:73%"></div></div>
+<span style="font-size:12px;font-weight:bold;color:#34a853">73%</span>
+</div>
+<main>
+<div class="card"><div class="ch blue">&#x1F464; 1. Avec les Noms (Identite)</div>
+<div class="rule-box">Le verbe To Be sert a nommer la personne ou l objet. <strong>I am / You are / He is / She is / It is / We are / They are</strong></div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I am Joule.</div><div class="fr">Je suis Joule.</div></div><button class="tts-btn" onclick="say('I am Joule.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You are Musuwa.</div><div class="fr">Tu es Musuwa.</div></div><button class="tts-btn" onclick="say('You are Musuwa.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He is Eric.</div><div class="fr">Il est Eric.</div></div><button class="tts-btn" onclick="say('He is Eric.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She is Aline.</div><div class="fr">Elle est Aline.</div></div><button class="tts-btn" onclick="say('She is Aline.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It is the cat.</div><div class="fr">C est le chat.</div></div><button class="tts-btn" onclick="say('It is the cat.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We are John and Jean.</div><div class="fr">Nous sommes John et Jean.</div></div><button class="tts-btn" onclick="say('We are John and Jean.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They are Brigitte and Aline.</div><div class="fr">Ce sont Brigitte et Aline.</div></div><button class="tts-btn" onclick="say('They are Brigitte and Aline.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch green">&#x1F468;&#x200D;&#x1F3EB; 2. Avec les Titres et Professions</div>
+<div class="rule-box">On utilise <strong>a</strong> devant une profession au singulier (consonne) et <strong>an</strong> devant une voyelle.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I am a teacher.</div><div class="fr">Je suis enseignant.</div></div><button class="tts-btn" onclick="say('I am a teacher.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You are a student.</div><div class="fr">Tu es etudiant.</div></div><button class="tts-btn" onclick="say('You are a student.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He is a doctor.</div><div class="fr">Il est medecin.</div></div><button class="tts-btn" onclick="say('He is a doctor.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She is a nurse.</div><div class="fr">Elle est infirmiere.</div></div><button class="tts-btn" onclick="say('She is a nurse.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It is a tool.</div><div class="fr">C est un outil.</div></div><button class="tts-btn" onclick="say('It is a tool.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We are workers.</div><div class="fr">Nous sommes des travailleurs.</div></div><button class="tts-btn" onclick="say('We are workers.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They are engineers.</div><div class="fr">Ils sont ingenieurs.</div></div><button class="tts-btn" onclick="say('They are engineers.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch orange">&#x1F60A; 3. Avec les Adjectifs (Etats et Sentiments)</div>
+<div class="rule-box">Sujet + <strong>To Be</strong> + Adjectif. L adjectif decrit l etat ou le sentiment du sujet.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I am happy.</div><div class="fr">Je suis heureux.</div></div><button class="tts-btn" onclick="say('I am happy.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You are kind.</div><div class="fr">Tu es gentil.</div></div><button class="tts-btn" onclick="say('You are kind.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He is tall.</div><div class="fr">Il est grand.</div></div><button class="tts-btn" onclick="say('He is tall.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She is beautiful.</div><div class="fr">Elle est belle.</div></div><button class="tts-btn" onclick="say('She is beautiful.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It is big.</div><div class="fr">C est grand.</div></div><button class="tts-btn" onclick="say('It is big.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We are tired.</div><div class="fr">Nous sommes fatigues.</div></div><button class="tts-btn" onclick="say('We are tired.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They are intelligent.</div><div class="fr">Ils sont intelligents.</div></div><button class="tts-btn" onclick="say('They are intelligent.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch purple">&#x1F3C3; 4. Le Present Continu (Action en cours)</div>
+<div class="rule-box">Structure : <strong>am / is / are + Verbe-ing</strong>. L action se passe en ce moment.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I am working.</div><div class="fr">Je suis en train de travailler.</div></div><button class="tts-btn" onclick="say('I am working.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You are learning.</div><div class="fr">Tu es en train d apprendre.</div></div><button class="tts-btn" onclick="say('You are learning.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He is sleeping.</div><div class="fr">Il est en train de dormir.</div></div><button class="tts-btn" onclick="say('He is sleeping.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She is cooking.</div><div class="fr">Elle est en train de cuisiner.</div></div><button class="tts-btn" onclick="say('She is cooking.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It is raining.</div><div class="fr">Il est en train de pleuvoir.</div></div><button class="tts-btn" onclick="say('It is raining.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We are talking.</div><div class="fr">Nous sommes en train de parler.</div></div><button class="tts-btn" onclick="say('We are talking.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They are playing.</div><div class="fr">Ils sont en train de jouer.</div></div><button class="tts-btn" onclick="say('They are playing.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch red">&#x1F570; 5. Le Passe Simple (Was / Were)</div>
+<div class="rule-box">Structure : <strong>I/He/She/It + WAS</strong> et <strong>You/We/They + WERE</strong>. Pour une action terminee dans le passe.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I was at home.</div><div class="fr">J etais a la maison.</div></div><button class="tts-btn" onclick="say('I was at home.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You were late.</div><div class="fr">Tu etais en retard.</div></div><button class="tts-btn" onclick="say('You were late.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He was a child.</div><div class="fr">Il etait un enfant.</div></div><button class="tts-btn" onclick="say('He was a child.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She was here.</div><div class="fr">Elle etait ici.</div></div><button class="tts-btn" onclick="say('She was here.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It was cold.</div><div class="fr">Il faisait froid.</div></div><button class="tts-btn" onclick="say('It was cold.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We were friends.</div><div class="fr">Nous etions amis.</div></div><button class="tts-btn" onclick="say('We were friends.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They were happy.</div><div class="fr">Ils etaient heureux.</div></div><button class="tts-btn" onclick="say('They were happy.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch teal">&#x23F3; 6. Le Present Perfect (Have/Has been)</div>
+<div class="rule-box">Structure : <strong>I/You/We/They + HAVE BEEN</strong> et <strong>He/She/It + HAS BEEN</strong>.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I have been busy.</div><div class="fr">J ai ete occupe.</div></div><button class="tts-btn" onclick="say('I have been busy.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You have been helpful.</div><div class="fr">Tu as ete d une grande aide.</div></div><button class="tts-btn" onclick="say('You have been helpful.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He has been sick.</div><div class="fr">Il a ete malade.</div></div><button class="tts-btn" onclick="say('He has been sick.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She has been a leader.</div><div class="fr">Elle a ete une meneuse.</div></div><button class="tts-btn" onclick="say('She has been a leader.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It has been a long day.</div><div class="fr">Ca a ete une longue journee.</div></div><button class="tts-btn" onclick="say('It has been a long day.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We have been together.</div><div class="fr">Nous avons ete ensemble.</div></div><button class="tts-btn" onclick="say('We have been together.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They have been away.</div><div class="fr">Ils ont ete absents.</div></div><button class="tts-btn" onclick="say('They have been away.',this)">&#128266;</button></div>
+</div></div>
+<div class="card"><div class="ch indigo">&#x1F483; 7. Le Passe Continu (Past Continuous)</div>
+<div class="rule-box">Structure : <strong>WAS/WERE + Verbe-ing</strong>. Action qui etait en train de se derouler dans le passe.</div>
+<div class="pbox">
+<div class="row"><div class="row-text"><div class="en"><span class="num">1</span>I was dancing.</div><div class="fr">Je dansais.</div></div><button class="tts-btn" onclick="say('I was dancing.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">2</span>You were eating.</div><div class="fr">Tu mangeais.</div></div><button class="tts-btn" onclick="say('You were eating.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">3</span>He was running.</div><div class="fr">Il courait.</div></div><button class="tts-btn" onclick="say('He was running.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">4</span>She was sleeping.</div><div class="fr">Elle dormait.</div></div><button class="tts-btn" onclick="say('She was sleeping.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">5</span>It was raining.</div><div class="fr">Il pleuvait.</div></div><button class="tts-btn" onclick="say('It was raining.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">6</span>We were watching TV.</div><div class="fr">Nous regardions la tele.</div></div><button class="tts-btn" onclick="say('We were watching TV.',this)">&#128266;</button></div>
+<div class="row"><div class="row-text"><div class="en"><span class="num">7</span>They were laughing.</div><div class="fr">Ils riaient.</div></div><button class="tts-btn" onclick="say('They were laughing.',this)">&#128266;</button></div>
+</div>
+<div class="tip">&#x1F4A1; Conseil Teacher Joule : Present : am/is/are. Passe simple : was/were. Passe continu : was/were + ing. Present perfect : have/has been.</div>
+</div>
+<div class="card"><div class="aend"><p style="font-size:12px;color:#64748b;margin-bottom:10px;">Explication complete par Teacher Joule bin Musuwa</p><button class="abig" id="btnBot" onclick="togglePlayAll()">&#9654; ECOUTER LA LECON 11 (20 min)</button></div></div>
+<div class="navbtns"><a href="Lesson10.html" class="nb2">&#8592; Lecon 10</a><a href="Lesson12.html" class="nb2 nxt">Lecon 12 &#8594;</a></div>
+</main>
+<footer>2026 EnglishWorld - Teacher Joule bin Musuwa</footer>
+<script>
+var tts=(typeof window!=='undefined'&&'speechSynthesis' in window);
+var all=['I am Joule.','You are Musuwa.','He is Eric.','She is Aline.','It is the cat.','We are John and Jean.','They are Brigitte and Aline.','I am a teacher.','You are a student.','He is a doctor.','She is a nurse.','It is a tool.','We are workers.','They are engineers.','I am happy.','You are kind.','He is tall.','She is beautiful.','It is big.','We are tired.','They are intelligent.','I am working.','You are learning.','He is sleeping.','She is cooking.','It is raining.','We are talking.','They are playing.','I was at home.','You were late.','He was a child.','She was here.','It was cold.','We were friends.','They were happy.','I have been busy.','You have been helpful.','He has been sick.','She has been a leader.','It has been a long day.','We have been together.','They have been away.','I was dancing.','You were eating.','He was running.','She was sleeping.','It was raining.','We were watching TV.','They were laughing.'];
+var playing=false,qi=0;
+function getVoice(){if(!tts)return null;var vs=window.speechSynthesis.getVoices();for(var i=0;i<vs.length;i++){if(vs[i].lang==='en-US')return vs[i];}for(var i=0;i<vs.length;i++){if(vs[i].lang.indexOf('en')===0)return vs[i];}return null;}
+function clearBtns(){var bs=document.querySelectorAll('.tts-btn.speaking');for(var i=0;i<bs.length;i++){bs[i].classList.remove('speaking');bs[i].innerHTML='&#128266;';}}
+function say(text,btn){if(!tts)return;if(btn&&btn.classList.contains('speaking')){window.speechSynthesis.cancel();btn.classList.remove('speaking');btn.innerHTML='&#128266;';if(playing)stopAll();return;}if(playing)stopAll();window.speechSynthesis.cancel();clearBtns();var u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.87;u.pitch=1.0;var v=getVoice();if(v)u.voice=v;if(btn){btn.classList.add('speaking');btn.innerHTML='&#9209;';u.onend=function(){btn.classList.remove('speaking');btn.innerHTML='&#128266;';};u.onerror=function(){btn.classList.remove('speaking');btn.innerHTML='&#128266;';};}window.speechSynthesis.speak(u);}
+function togglePlayAll(){if(!tts)return;if(playing){stopAll();return;}playing=true;qi=0;document.getElementById('btnTop').innerHTML='&#9209; ARRETER';document.getElementById('btnTop').classList.add('stop');document.getElementById('btnBot').innerHTML='&#9209; ARRETER';document.getElementById('btnBot').classList.add('stop');playNext();}
+function playNext(){if(!playing||qi>=all.length){stopAll();return;}var u=new SpeechSynthesisUtterance(all[qi]);qi++;u.lang='en-US';u.rate=0.87;u.pitch=1.0;var v=getVoice();if(v)u.voice=v;u.onend=function(){setTimeout(playNext,300);};u.onerror=function(){setTimeout(playNext,300);};window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
+function stopAll(){playing=false;if(tts)window.speechSynthesis.cancel();clearBtns();document.getElementById('btnTop').innerHTML='&#9654; ECOUTER TOUTE LA LECON';document.getElementById('btnTop').classList.remove('stop');document.getElementById('btnBot').innerHTML='&#9654; ECOUTER LA LECON 11 (20 min)';document.getElementById('btnBot').classList.remove('stop');}
+if(tts&&window.speechSynthesis.onvoiceschanged!==undefined){window.speechSynthesis.onvoiceschanged=function(){};}
+</script>
+</body>
+</html>
