@@ -291,7 +291,7 @@
   </div>
 
   <!-- PLAY ALL -->
-  <button class="play-all-btn" onclick="playAll()">▶ Play All Vocabulary</button>
+  <button class="play-all-btn" onclick="playAll()">▶ Play All (EN + FR)</button>
 
   <!-- ════ SECTION 1 : Moments & Activities ════ -->
   <div class="card">
@@ -305,7 +305,7 @@
             <div class="en">Meal</div>
             <div class="fr">Repas</div>
           </div>
-          <button class="tts-btn" onclick="speak('Meal')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Meal','Repas')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -314,7 +314,7 @@
             <div class="en">Breakfast</div>
             <div class="fr">Petit-déjeuner</div>
           </div>
-          <button class="tts-btn" onclick="speak('Breakfast')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Breakfast','Petit-déjeuner')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -323,7 +323,7 @@
             <div class="en">Lunch</div>
             <div class="fr">Déjeuner</div>
           </div>
-          <button class="tts-btn" onclick="speak('Lunch')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Lunch','Déjeuner')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -332,7 +332,7 @@
             <div class="en">Dinner</div>
             <div class="fr">Dîner</div>
           </div>
-          <button class="tts-btn" onclick="speak('Dinner')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Dinner','Dîner')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -341,7 +341,7 @@
             <div class="en">Prayer</div>
             <div class="fr">Prière</div>
           </div>
-          <button class="tts-btn" onclick="speak('Prayer')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Prayer','Prière')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -350,7 +350,7 @@
             <div class="en">Story</div>
             <div class="fr">Histoire / Conte</div>
           </div>
-          <button class="tts-btn" onclick="speak('Story')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Story','Histoire / Conte')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -359,7 +359,7 @@
             <div class="en">Game</div>
             <div class="fr">Jeu</div>
           </div>
-          <button class="tts-btn" onclick="speak('Game')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Game','Jeu')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -368,7 +368,7 @@
             <div class="en">Walk</div>
             <div class="fr">Promenade</div>
           </div>
-          <button class="tts-btn" onclick="speak('Walk')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Walk','Promenade')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -377,7 +377,7 @@
             <div class="en">Trip</div>
             <div class="fr">Voyage</div>
           </div>
-          <button class="tts-btn" onclick="speak('Trip')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Trip','Voyage')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -386,7 +386,7 @@
             <div class="en">Celebration</div>
             <div class="fr">Célébration</div>
           </div>
-          <button class="tts-btn" onclick="speak('Celebration')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Celebration','Célébration')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -395,7 +395,7 @@
             <div class="en">Party</div>
             <div class="fr">Fête</div>
           </div>
-          <button class="tts-btn" onclick="speak('Party')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Party','Fête')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -404,7 +404,7 @@
             <div class="en">Holiday</div>
             <div class="fr">Vacances</div>
           </div>
-          <button class="tts-btn" onclick="speak('Holiday')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Holiday','Vacances')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -413,7 +413,7 @@
             <div class="en">Tradition</div>
             <div class="fr">Tradition</div>
           </div>
-          <button class="tts-btn" onclick="speak('Tradition')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Tradition','Tradition')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -422,7 +422,7 @@
             <div class="en">Memory</div>
             <div class="fr">Souvenir</div>
           </div>
-          <button class="tts-btn" onclick="speak('Memory')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Memory','Souvenir')">🔊</button>
         </div>
 
         <div class="vocab-item">
@@ -431,7 +431,7 @@
             <div class="en">Photo</div>
             <div class="fr">Photo</div>
           </div>
-          <button class="tts-btn" onclick="speak('Photo')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Photo','Photo')">🔊</button>
         </div>
 
       </div>
@@ -447,77 +447,77 @@
         <div class="vocab-item">
           <span class="emoji">❤️</span>
           <div class="words"><div class="en">Love</div><div class="fr">Amour</div></div>
-          <button class="tts-btn" onclick="speak('Love')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Love','Amour')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🫡</span>
           <div class="words"><div class="en">Respect</div><div class="fr">Respect</div></div>
-          <button class="tts-btn" onclick="speak('Respect')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Respect','Respect')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🤝</span>
           <div class="words"><div class="en">Trust</div><div class="fr">Confiance</div></div>
-          <button class="tts-btn" onclick="speak('Trust')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Trust','Confiance')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">😇</span>
           <div class="words"><div class="en">Honesty</div><div class="fr">Honnêteté</div></div>
-          <button class="tts-btn" onclick="speak('Honesty')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Honesty','Honnêteté')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🥧</span>
           <div class="words"><div class="en">Sharing</div><div class="fr">Partage</div></div>
-          <button class="tts-btn" onclick="speak('Sharing')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Sharing','Partage')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🆘</span>
           <div class="words"><div class="en">Help</div><div class="fr">Aide</div></div>
-          <button class="tts-btn" onclick="speak('Help')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Help','Aide')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🤗</span>
           <div class="words"><div class="en">Support</div><div class="fr">Soutien</div></div>
-          <button class="tts-btn" onclick="speak('Support')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Support','Soutien')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🗣️</span>
           <div class="words"><div class="en">Advice</div><div class="fr">Conseil</div></div>
-          <button class="tts-btn" onclick="speak('Advice')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Advice','Conseil')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">⭐</span>
           <div class="words"><div class="en">Example</div><div class="fr">Exemple</div></div>
-          <button class="tts-btn" onclick="speak('Example')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Example','Exemple')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">📏</span>
           <div class="words"><div class="en">Rule</div><div class="fr">Règle</div></div>
-          <button class="tts-btn" onclick="speak('Rule')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Rule','Règle')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">📋</span>
           <div class="words"><div class="en">Duty</div><div class="fr">Devoir</div></div>
-          <button class="tts-btn" onclick="speak('Duty')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Duty','Devoir')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🔑</span>
           <div class="words"><div class="en">Responsibility</div><div class="fr">Responsabilité</div></div>
-          <button class="tts-btn" onclick="speak('Responsibility')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Responsibility','Responsabilité')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">⏳</span>
           <div class="words"><div class="en">Patience</div><div class="fr">Patience</div></div>
-          <button class="tts-btn" onclick="speak('Patience')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Patience','Patience')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">😊</span>
           <div class="words"><div class="en">Kindness</div><div class="fr">Gentillesse</div></div>
-          <button class="tts-btn" onclick="speak('Kindness')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Kindness','Gentillesse')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">✊</span>
           <div class="words"><div class="en">Unity</div><div class="fr">Unité</div></div>
-          <button class="tts-btn" onclick="speak('Unity')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Unity','Unité')">🔊</button>
         </div>
 
       </div>
@@ -533,77 +533,77 @@
         <div class="vocab-item">
           <span class="emoji">😄</span>
           <div class="words"><div class="en">Joy</div><div class="fr">Joie</div></div>
-          <button class="tts-btn" onclick="speak('Joy')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Joy','Joie')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">✨</span>
           <div class="words"><div class="en">Happiness</div><div class="fr">Bonheur</div></div>
-          <button class="tts-btn" onclick="speak('Happiness')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Happiness','Bonheur')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🕊️</span>
           <div class="words"><div class="en">Peace</div><div class="fr">Paix</div></div>
-          <button class="tts-btn" onclick="speak('Peace')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Peace','Paix')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">😂</span>
           <div class="words"><div class="en">Laughter</div><div class="fr">Rire</div></div>
-          <button class="tts-btn" onclick="speak('Laughter')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Laughter','Rire')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🙂</span>
           <div class="words"><div class="en">Smile</div><div class="fr">Sourire</div></div>
-          <button class="tts-btn" onclick="speak('Smile')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Smile','Sourire')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">💋</span>
           <div class="words"><div class="en">Kiss</div><div class="fr">Bisou</div></div>
-          <button class="tts-btn" onclick="speak('Kiss')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Kiss','Bisou')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🫂</span>
           <div class="words"><div class="en">Hug</div><div class="fr">Câlin</div></div>
-          <button class="tts-btn" onclick="speak('Hug')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Hug','Câlin')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🤫</span>
           <div class="words"><div class="en">Secret</div><div class="fr">Secret</div></div>
-          <button class="tts-btn" onclick="speak('Secret')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Secret','Secret')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🤙</span>
           <div class="words"><div class="en">Promise</div><div class="fr">Promesse</div></div>
-          <button class="tts-btn" onclick="speak('Promise')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Promise','Promesse')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">💡</span>
           <div class="words"><div class="en">Truth</div><div class="fr">Vérité</div></div>
-          <button class="tts-btn" onclick="speak('Truth')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Truth','Vérité')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🙏</span>
           <div class="words"><div class="en">Forgiveness</div><div class="fr">Pardon</div></div>
-          <button class="tts-btn" onclick="speak('Forgiveness')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Forgiveness','Pardon')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🧠</span>
           <div class="words"><div class="en">Understanding</div><div class="fr">Compréhension</div></div>
-          <button class="tts-btn" onclick="speak('Understanding')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Understanding','Compréhension')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">💬</span>
           <div class="words"><div class="en">Talk</div><div class="fr">Discussion</div></div>
-          <button class="tts-btn" onclick="speak('Talk')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Talk','Discussion')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">👂</span>
           <div class="words"><div class="en">Listening</div><div class="fr">Écoute</div></div>
-          <button class="tts-btn" onclick="speak('Listening')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Listening','Écoute')">🔊</button>
         </div>
         <div class="vocab-item">
           <span class="emoji">🤫</span>
           <div class="words"><div class="en">Silence</div><div class="fr">Silence</div></div>
-          <button class="tts-btn" onclick="speak('Silence')">🔊</button>
+          <button class="tts-btn" onclick="speakBilingual('Silence','Silence')">🔊</button>
         </div>
 
       </div>
@@ -621,70 +621,70 @@
           <div class="en">Good morning, everyone!</div>
           <div class="fr">Bonjour tout le monde !</div>
         </div>
-        <button class="tts-btn" onclick="speak('Good morning, everyone!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Good morning, everyone!','Bonjour tout le monde !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Did you sleep well?</div>
           <div class="fr">As-tu bien dormi ?</div>
         </div>
-        <button class="tts-btn" onclick="speak('Did you sleep well?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Did you sleep well?','As-tu bien dormi ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Time to wake up!</div>
           <div class="fr">C'est l'heure de se réveiller !</div>
         </div>
-        <button class="tts-btn" onclick="speak('Time to wake up!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Time to wake up!','C\'est l\'heure de se réveiller !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Don't be late for school.</div>
           <div class="fr">Ne sois pas en retard pour l'école.</div>
         </div>
-        <button class="tts-btn" onclick="speak('Do not be late for school.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Do not be late for school.','Ne sois pas en retard pour l\'école.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Where is my toothbrush?</div>
           <div class="fr">Où est ma brosse à dents ?</div>
         </div>
-        <button class="tts-btn" onclick="speak('Where is my toothbrush?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Where is my toothbrush?','Où est ma brosse à dents ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Breakfast is on the table.</div>
           <div class="fr">Le petit-déjeuner est sur la table.</div>
         </div>
-        <button class="tts-btn" onclick="speak('Breakfast is on the table.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Breakfast is on the table.','Le petit-déjeuner est sur la table.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Hurry up, we are leaving.</div>
           <div class="fr">Dépêche-toi, on part.</div>
         </div>
-        <button class="tts-btn" onclick="speak('Hurry up, we are leaving.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Hurry up, we are leaving.','Dépêche-toi, on part.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Have a great day!</div>
           <div class="fr">Passe une excellente journée !</div>
         </div>
-        <button class="tts-btn" onclick="speak('Have a great day!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Have a great day!','Passe une excellente journée !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">I'll see you later.</div>
           <div class="fr">On se voit plus tard.</div>
         </div>
-        <button class="tts-btn" onclick="speak('I will see you later.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I will see you later.','On se voit plus tard.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text">
           <div class="en">Give me a kiss before you go.</div>
           <div class="fr">Donne-moi un bisou avant de partir.</div>
         </div>
-        <button class="tts-btn" onclick="speak('Give me a kiss before you go.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Give me a kiss before you go.','Donne-moi un bisou avant de partir.')">🔊</button>
       </div>
     </div>
   </div>
@@ -695,43 +695,43 @@
     <div class="card-body">
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I am hungry.</div><div class="fr">J'ai faim.</div></div>
-        <button class="tts-btn" onclick="speak('I am hungry.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I am hungry.','J\'ai faim.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">What's for dinner?</div><div class="fr">Qu'est-ce qu'on mange ce soir ?</div></div>
-        <button class="tts-btn" onclick="speak('What is for dinner?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('What is for dinner?','Qu\'est-ce qu\'on mange ce soir ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Can you help me set the table?</div><div class="fr">Peux-tu m'aider à mettre la table ?</div></div>
-        <button class="tts-btn" onclick="speak('Can you help me set the table?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Can you help me set the table?','Peux-tu m\'aider à mettre la table ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Wash your hands before eating.</div><div class="fr">Lave tes mains avant de manger.</div></div>
-        <button class="tts-btn" onclick="speak('Wash your hands before eating.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Wash your hands before eating.','Lave tes mains avant de manger.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Pass me the water, please.</div><div class="fr">Passe-moi l'eau, s'il te plaît.</div></div>
-        <button class="tts-btn" onclick="speak('Pass me the water, please.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Pass me the water, please.','Passe-moi l\'eau, s\'il te plaît.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">It tastes delicious!</div><div class="fr">C'est délicieux !</div></div>
-        <button class="tts-btn" onclick="speak('It tastes delicious!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('It tastes delicious!','C\'est délicieux !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I am full.</div><div class="fr">Je n'ai plus faim.</div></div>
-        <button class="tts-btn" onclick="speak('I am full.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I am full.','Je n\'ai plus faim.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Who wants more?</div><div class="fr">Qui en veut encore ?</div></div>
-        <button class="tts-btn" onclick="speak('Who wants more?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Who wants more?','Qui en veut encore ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Don't talk with your mouth full.</div><div class="fr">Ne parle pas la bouche pleine.</div></div>
-        <button class="tts-btn" onclick="speak('Do not talk with your mouth full.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Do not talk with your mouth full.','Ne parle pas la bouche pleine.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Help your sister with the dishes.</div><div class="fr">Aide ta sœur pour la vaisselle.</div></div>
-        <button class="tts-btn" onclick="speak('Help your sister with the dishes.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Help your sister with the dishes.','Aide ta sœur pour la vaisselle.')">🔊</button>
       </div>
     </div>
   </div>
@@ -742,43 +742,43 @@
     <div class="card-body">
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">How was school today?</div><div class="fr">C'était comment l'école aujourd'hui ?</div></div>
-        <button class="tts-btn" onclick="speak('How was school today?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('How was school today?','C\'était comment l\'école aujourd\'hui ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Do you have homework?</div><div class="fr">As-tu des devoirs ?</div></div>
-        <button class="tts-btn" onclick="speak('Do you have homework?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Do you have homework?','As-tu des devoirs ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Show me your grades.</div><div class="fr">Montre-moi tes notes.</div></div>
-        <button class="tts-btn" onclick="speak('Show me your grades.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Show me your grades.','Montre-moi tes notes.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I need help with my math.</div><div class="fr">J'ai besoin d'aide pour mes maths.</div></div>
-        <button class="tts-btn" onclick="speak('I need help with my math.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I need help with my math.','J\'ai besoin d\'aide pour mes maths.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Did you finish your project?</div><div class="fr">As-tu fini ton projet ?</div></div>
-        <button class="tts-btn" onclick="speak('Did you finish your project?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Did you finish your project?','As-tu fini ton projet ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">You did a great job!</div><div class="fr">Tu as fait du bon travail !</div></div>
-        <button class="tts-btn" onclick="speak('You did a great job!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('You did a great job!','Tu as fait du bon travail !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Go study in your room.</div><div class="fr">Va étudier dans ta chambre.</div></div>
-        <button class="tts-btn" onclick="speak('Go study in your room.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Go study in your room.','Va étudier dans ta chambre.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Pack your bag for tomorrow.</div><div class="fr">Prépare ton sac pour demain.</div></div>
-        <button class="tts-btn" onclick="speak('Pack your bag for tomorrow.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Pack your bag for tomorrow.','Prépare ton sac pour demain.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Where is your notebook?</div><div class="fr">Où est ton cahier ?</div></div>
-        <button class="tts-btn" onclick="speak('Where is your notebook?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Where is your notebook?','Où est ton cahier ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Be proud of your efforts.</div><div class="fr">Sois fier de tes efforts.</div></div>
-        <button class="tts-btn" onclick="speak('Be proud of your efforts.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Be proud of your efforts.','Sois fier de tes efforts.')">🔊</button>
       </div>
     </div>
   </div>
@@ -789,43 +789,43 @@
     <div class="card-body">
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Clean your room.</div><div class="fr">Nettoie ta chambre.</div></div>
-        <button class="tts-btn" onclick="speak('Clean your room.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Clean your room.','Nettoie ta chambre.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Put away your toys.</div><div class="fr">Range tes jouets.</div></div>
-        <button class="tts-btn" onclick="speak('Put away your toys.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Put away your toys.','Range tes jouets.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">It's my turn to use the computer.</div><div class="fr">C'est mon tour d'utiliser l'ordinateur.</div></div>
-        <button class="tts-btn" onclick="speak('It is my turn to use the computer.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('It is my turn to use the computer.','C\'est mon tour d\'utiliser l\'ordinateur.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Ask your father for permission.</div><div class="fr">Demande la permission à ton père.</div></div>
-        <button class="tts-btn" onclick="speak('Ask your father for permission.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Ask your father for permission.','Demande la permission à ton père.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Be polite to your uncle.</div><div class="fr">Sois poli avec ton oncle.</div></div>
-        <button class="tts-btn" onclick="speak('Be polite to your uncle.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Be polite to your uncle.','Sois poli avec ton oncle.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Stop fighting!</div><div class="fr">Arrêtez de vous battre !</div></div>
-        <button class="tts-btn" onclick="speak('Stop fighting!')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Stop fighting!','Arrêtez de vous battre !')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Listen to what I am saying.</div><div class="fr">Écoute ce que je dis.</div></div>
-        <button class="tts-btn" onclick="speak('Listen to what I am saying.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Listen to what I am saying.','Écoute ce que je dis.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Don't stay up too late.</div><div class="fr">Ne reste pas debout trop tard.</div></div>
-        <button class="tts-btn" onclick="speak('Do not stay up too late.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Do not stay up too late.','Ne reste pas debout trop tard.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Turn off the TV.</div><div class="fr">Éteins la télé.</div></div>
-        <button class="tts-btn" onclick="speak('Turn off the TV.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Turn off the TV.','Éteins la télé.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Who broke this?</div><div class="fr">Qui a cassé ça ?</div></div>
-        <button class="tts-btn" onclick="speak('Who broke this?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Who broke this?','Qui a cassé ça ?')">🔊</button>
       </div>
     </div>
   </div>
@@ -836,43 +836,43 @@
     <div class="card-body">
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I love you, Mom.</div><div class="fr">Je t'aime, maman.</div></div>
-        <button class="tts-btn" onclick="speak('I love you, Mom.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I love you, Mom.','Je t\'aime, maman.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I am here for you.</div><div class="fr">Je suis là pour toi.</div></div>
-        <button class="tts-btn" onclick="speak('I am here for you.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I am here for you.','Je suis là pour toi.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Don't worry, everything will be fine.</div><div class="fr">Ne t'inquiète pas, tout ira bien.</div></div>
-        <button class="tts-btn" onclick="speak('Do not worry, everything will be fine.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Do not worry, everything will be fine.','Ne t\'inquiète pas, tout ira bien.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I am so proud of you.</div><div class="fr">Je suis tellement fier de toi.</div></div>
-        <button class="tts-btn" onclick="speak('I am so proud of you.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I am so proud of you.','Je suis tellement fier de toi.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Tell me what's wrong.</div><div class="fr">Dis-moi ce qui ne va pas.</div></div>
-        <button class="tts-btn" onclick="speak('Tell me what is wrong.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Tell me what is wrong.','Dis-moi ce qui ne va pas.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Give your brother a hug.</div><div class="fr">Fais un câlin à ton frère.</div></div>
-        <button class="tts-btn" onclick="speak('Give your brother a hug.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Give your brother a hug.','Fais un câlin à ton frère.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Thank you for the advice.</div><div class="fr">Merci pour le conseil.</div></div>
-        <button class="tts-btn" onclick="speak('Thank you for the advice.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Thank you for the advice.','Merci pour le conseil.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">You are my best friend.</div><div class="fr">Tu es mon meilleur ami.</div></div>
-        <button class="tts-btn" onclick="speak('You are my best friend.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('You are my best friend.','Tu es mon meilleur ami.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Forgive me for being mean.</div><div class="fr">Pardonne-moi d'avoir été méchant.</div></div>
-        <button class="tts-btn" onclick="speak('Forgive me for being mean.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Forgive me for being mean.','Pardonne-moi d\'avoir été méchant.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">We are a strong family.</div><div class="fr">Nous sommes une famille forte.</div></div>
-        <button class="tts-btn" onclick="speak('We are a strong family.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('We are a strong family.','Nous sommes une famille forte.')">🔊</button>
       </div>
     </div>
   </div>
@@ -883,43 +883,43 @@
     <div class="card-body">
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">I am tired.</div><div class="fr">Je suis fatigué.</div></div>
-        <button class="tts-btn" onclick="speak('I am tired.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('I am tired.','Je suis fatigué.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Time for a bath.</div><div class="fr">C'est l'heure du bain.</div></div>
-        <button class="tts-btn" onclick="speak('Time for a bath.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Time for a bath.','C\'est l\'heure du bain.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Put on your pajamas.</div><div class="fr">Mets ton pyjama.</div></div>
-        <button class="tts-btn" onclick="speak('Put on your pajamas.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Put on your pajamas.','Mets ton pyjama.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Brush your teeth.</div><div class="fr">Brosse tes dents.</div></div>
-        <button class="tts-btn" onclick="speak('Brush your teeth.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Brush your teeth.','Brosse tes dents.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Where is my blanket?</div><div class="fr">Où est ma couverture ?</div></div>
-        <button class="tts-btn" onclick="speak('Where is my blanket?')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Where is my blanket?','Où est ma couverture ?')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Read me a story, please.</div><div class="fr">Lis-moi une histoire, s'il te plaît.</div></div>
-        <button class="tts-btn" onclick="speak('Read me a story, please.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Read me a story, please.','Lis-moi une histoire, s\'il te plaît.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Turn off the light.</div><div class="fr">Éteins la lumière.</div></div>
-        <button class="tts-btn" onclick="speak('Turn off the light.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Turn off the light.','Éteins la lumière.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Good night, sleep tight.</div><div class="fr">Bonne nuit, dors bien.</div></div>
-        <button class="tts-btn" onclick="speak('Good night, sleep tight.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Good night, sleep tight.','Bonne nuit, dors bien.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">See you in the morning.</div><div class="fr">À demain matin.</div></div>
-        <button class="tts-btn" onclick="speak('See you in the morning.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('See you in the morning.','À demain matin.')">🔊</button>
       </div>
       <div class="phrase-item">
         <div class="phrase-text"><div class="en">Sweet dreams.</div><div class="fr">Fais de beaux rêves.</div></div>
-        <button class="tts-btn" onclick="speak('Sweet dreams.')">🔊</button>
+        <button class="tts-btn" onclick="speakBilingual('Sweet dreams.','Fais de beaux rêves.')">🔊</button>
       </div>
     </div>
   </div>
@@ -968,7 +968,7 @@
 <script>
   const synth = window.speechSynthesis;
   let voices = [];
-  let allWords = [];
+  let allPairs = [];   // [{en, fr}, ...]
   let playIndex = 0;
   let isPlaying = false;
 
@@ -981,29 +981,49 @@
     speechSynthesis.onvoiceschanged = loadVoices;
   }
 
-  function getEnglishVoice() {
-    return voices.find(v => v.lang.startsWith('en')) || voices[0] || null;
+  function getVoice(lang) {
+    return voices.find(v => v.lang === lang)
+        || voices.find(v => v.lang.startsWith(lang.split('-')[0]))
+        || null;
   }
 
-  function speak(text) {
+  // ── BILINGUAL: speak English then French ──
+  function speakBilingual(en, fr) {
     if (!synth) return;
     synth.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'en-US';
-    utter.rate = 0.85;
-    const v = getEnglishVoice();
-    if (v) utter.voice = v;
-    synth.speak(utter);
+
+    const u1 = new SpeechSynthesisUtterance(en);
+    u1.lang = 'en-US';
+    u1.rate = 0.85;
+    const vEn = getVoice('en-US');
+    if (vEn) u1.voice = vEn;
+
+    u1.onend = () => {
+      setTimeout(() => {
+        const u2 = new SpeechSynthesisUtterance(fr);
+        u2.lang = 'fr-FR';
+        u2.rate = 0.9;
+        const vFr = getVoice('fr-FR');
+        if (vFr) u2.voice = vFr;
+        synth.speak(u2);
+      }, 1800);
+    };
+
+    synth.speak(u1);
   }
 
-  // Build Play All list: all vocab English words
+  // ── PLAY ALL: bilingual for each item ──
   function buildPlayList() {
-    allWords = [];
-    document.querySelectorAll('.vocab-item .en').forEach(el => {
-      allWords.push(el.textContent.trim());
+    allPairs = [];
+    document.querySelectorAll('.vocab-item').forEach(item => {
+      const en = item.querySelector('.en')?.textContent.trim() || '';
+      const fr = item.querySelector('.fr')?.textContent.trim() || '';
+      if (en) allPairs.push({en, fr});
     });
-    document.querySelectorAll('.phrase-item .en').forEach(el => {
-      allWords.push(el.textContent.trim());
+    document.querySelectorAll('.phrase-item').forEach(item => {
+      const en = item.querySelector('.en')?.textContent.trim() || '';
+      const fr = item.querySelector('.fr')?.textContent.trim() || '';
+      if (en) allPairs.push({en, fr});
     });
   }
 
@@ -1011,32 +1031,47 @@
     if (isPlaying) {
       synth.cancel();
       isPlaying = false;
-      document.querySelector('.play-all-btn').textContent = '▶ Play All Vocabulary';
+      document.querySelector('.play-all-btn').textContent = '▶ Play All (EN + FR)';
       return;
     }
     buildPlayList();
     playIndex = 0;
     isPlaying = true;
     document.querySelector('.play-all-btn').textContent = '⏹ Stop';
-    playNext();
+    playNextBilingual();
   }
 
-  function playNext() {
-    if (!isPlaying || playIndex >= allWords.length) {
+  function playNextBilingual() {
+    if (!isPlaying || playIndex >= allPairs.length) {
       isPlaying = false;
-      document.querySelector('.play-all-btn').textContent = '▶ Play All Vocabulary';
+      document.querySelector('.play-all-btn').textContent = '▶ Play All (EN + FR)';
       return;
     }
-    const utter = new SpeechSynthesisUtterance(allWords[playIndex]);
-    utter.lang = 'en-US';
-    utter.rate = 0.85;
-    const v = getEnglishVoice();
-    if (v) utter.voice = v;
-    utter.onend = () => {
-      playIndex++;
-      setTimeout(playNext, 500);
+
+    const pair = allPairs[playIndex];
+
+    const u1 = new SpeechSynthesisUtterance(pair.en);
+    u1.lang = 'en-US';
+    u1.rate = 0.85;
+    const vEn = getVoice('en-US');
+    if (vEn) u1.voice = vEn;
+
+    u1.onend = () => {
+      setTimeout(() => {
+        const u2 = new SpeechSynthesisUtterance(pair.fr);
+        u2.lang = 'fr-FR';
+        u2.rate = 0.9;
+        const vFr = getVoice('fr-FR');
+        if (vFr) u2.voice = vFr;
+        u2.onend = () => {
+          playIndex++;
+          setTimeout(playNextBilingual, 800);
+        };
+        synth.speak(u2);
+      }, 1800);
     };
-    synth.speak(utter);
+
+    synth.speak(u1);
   }
 </script>
 
