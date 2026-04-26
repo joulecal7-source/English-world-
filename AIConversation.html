@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnglishWorld - AI Conversation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%); min-height: 100vh; padding: 12px; color: #1e293b; }
+        .container { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; height: 100vh; gap: 12px; }
+        .header { background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+        .header h1 { font-size: 24px; font-weight: 700; color: #2563eb; margin-bottom: 4px; }
+        .header p { font-size: 13px; color: #64748b; }
+        .chat-container { flex: 1; background: #fff; border-radius: 16px; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .message { display: flex; gap: 8px; animation: slideIn 0.3s ease; }
+        .message.user { justify-content: flex-end; }
+        .message.ai { justify-content: flex-start; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .message-bubble { max-width: 85%; padding: 12px 14px; border-radius: 12px; font-size: 14px; line-height: 1.4; word-wrap: break-word; }
+        .message.user .message-bubble { background: #2563eb; color: #fff; border-radius: 12px 4px 12px 12px; }
+        .message.ai .message-bubble { background: #f8fafc; color: #1e293b; border-radius: 4px 12px 12px 12px; border: 1px solid #e2e8f0; }
+        .input-area { display: flex; gap: 8px; background: #fff; padding: 12px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .input-field { flex: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: inherit; }
+        .input-field:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .send-btn { width: 40px; height: 40px; border-radius: 8px; border: none; background: #2563eb; color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .send-btn:hover { background: #1e40af; transform: translateY(-2px); }
+        .back-btn { position: absolute; top: 20px; left: 20px; background: #fff; border: none; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .back-btn:hover { transform: translateX(-4px); }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="goBack()">← Retour</button>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Conversation</h1>
+            <p>Practice English with AI • Pratiquez l'anglais avec l'IA</p>
+        </div>
+
+        <div class="chat-container" id="chatContainer"></div>
+
+        <div class="input-area">
+            <input type="text" class="input-field" id="userInput" placeholder="Type... / Tapez..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <script>
+        let conversationHistory = [];
+        let isWaitingForResponse = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            addSystemMessage('Welcome!', 'Start practicing English. Type anything!');
+        });
+
+        function addMessage(text, sender) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = text;
+
+            messageDiv.appendChild(bubble);
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function addSystemMessage(title, text) {
+            const chatContainer = document.getElementById('chatContainer');
+            const systemDiv = document.createElement('div');
+            systemDiv.className = 'message ai';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = `<strong>${title}</strong><br>${text}`;
+
+            systemDiv.appendChild(bubble);
+            chatContainer.appendChild(systemDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+
+            if (!text || isWaitingForResponse) return;
+
+            addMessage(text, 'user');
+            input.value = '';
+            isWaitingForResponse = true;
+
+            conversationHistory.push({ role: 'user', content: text });
+
+            try {
+                // Simple response (without API key for now)
+                const responses = [
+                    "That's great! Can you tell me more?",
+                    "Interesting! How does that make you feel?",
+                    "I see. What else would you like to practice?",
+                    "Good point! Can you give an example?",
+                    "Well said! Do you use this often?"
+                ];
+                
+                const aiMessage = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(aiMessage, 'ai');
+                conversationHistory.push({ role: 'assistant', content: aiMessage });
+            } catch (error) {
+                addMessage('Error: ' + error.message, 'ai');
+            }
+
+            isWaitingForResponse = false;
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
