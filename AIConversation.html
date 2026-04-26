@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,18 +31,15 @@
 </head>
 <body>
     <button class="back-btn" onclick="goBack()">← Retour</button>
-
     <div class="container">
         <div class="header">
             <h1>🤖 AI Conversation</h1>
             <p>Practice English with AI • Pratiquez l'anglais avec l'IA</p>
         </div>
-
         <div class="chat-container" id="chatContainer"></div>
-
         <div class="input-area">
             <input type="text" class="input-field" id="userInput" placeholder="Type... / Tapez..." onkeypress="handleKeyPress(event)">
-            <button class="send-btn" onclick="sendMessage()">➤</button>
+            <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
         </div>
     </div>
 
@@ -49,19 +47,39 @@
         let conversationHistory = [];
         let isWaitingForResponse = false;
 
+        const aiResponses = {
+            greeting: [
+                "Hello! Nice to meet you! How are you today? (Bonjour! Comment allez-vous?)",
+                "Hi there! I'm excited to practice English with you. What's on your mind? (Salut! Je suis ravi de pratiquer l'anglais avec toi.)",
+                "Hey! Good to see you. What would you like to talk about? (Salut! Content de te voir. De quoi veux-tu parler?)"
+            ],
+            question: [
+                "That's a great question! Let me think about that... (C'est une excellente question!)",
+                "Interesting! Tell me more about what you mean. (Intéressant! Raconte-moi plus.)",
+                "Good point! Can you give me an example? (Bon point! Peux-tu me donner un exemple?)"
+            ],
+            statement: [
+                "I see! That's interesting. Can you tell me more? (Je comprends! C'est intéressant. Peux-tu m'en dire plus?)",
+                "Wow, that sounds interesting! How did that happen? (Wow, ça semble intéressant! Comment ça s'est passé?)",
+                "That makes sense. Have you always felt that way? (C'est logique. As-tu toujours senti ça?)"
+            ],
+            thanks: [
+                "You're welcome! I'm happy to help you practice. (De rien! Je suis heureux de t'aider à pratiquer.)",
+                "My pleasure! Keep practicing and you'll improve quickly! (C'est un plaisir! Continue à pratiquer et tu progresseras vite!)"
+            ]
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-            addSystemMessage('Welcome!', 'Start practicing English. Type anything!');
+            addSystemMessage('Welcome!', 'Start practicing English. Type anything and I\'ll respond naturally!');
         });
 
         function addMessage(text, sender) {
             const chatContainer = document.getElementById('chatContainer');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
-
             const bubble = document.createElement('div');
             bubble.className = 'message-bubble';
             bubble.textContent = text;
-
             messageDiv.appendChild(bubble);
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -71,14 +89,27 @@
             const chatContainer = document.getElementById('chatContainer');
             const systemDiv = document.createElement('div');
             systemDiv.className = 'message ai';
-
             const bubble = document.createElement('div');
             bubble.className = 'message-bubble';
             bubble.innerHTML = `<strong>${title}</strong><br>${text}`;
-
             systemDiv.appendChild(bubble);
             chatContainer.appendChild(systemDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function getAIResponse(userText) {
+            const lowerText = userText.toLowerCase();
+            let responseArray = aiResponses.statement;
+
+            if (/^(hello|hi|hey|bonjour|salut|coucou)\b/i.test(lowerText)) {
+                responseArray = aiResponses.greeting;
+            } else if (/\?$/.test(userText.trim())) {
+                responseArray = aiResponses.question;
+            } else if (/thank|merci/i.test(lowerText)) {
+                responseArray = aiResponses.thanks;
+            }
+
+            return responseArray[Math.floor(Math.random() * responseArray.length)];
         }
 
         async function sendMessage() {
@@ -89,32 +120,30 @@
 
             addMessage(text, 'user');
             input.value = '';
-            isWaitingForResponse = true;
+            input.disabled = true;
+            document.getElementById('sendBtn').disabled = true;
 
             conversationHistory.push({ role: 'user', content: text });
+            isWaitingForResponse = true;
+
+            await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400));
 
             try {
-                // Simple response (without API key for now)
-                const responses = [
-                    "That's great! Can you tell me more?",
-                    "Interesting! How does that make you feel?",
-                    "I see. What else would you like to practice?",
-                    "Good point! Can you give an example?",
-                    "Well said! Do you use this often?"
-                ];
-                
-                const aiMessage = responses[Math.floor(Math.random() * responses.length)];
+                const aiMessage = getAIResponse(text);
                 addMessage(aiMessage, 'ai');
                 conversationHistory.push({ role: 'assistant', content: aiMessage });
             } catch (error) {
-                addMessage('Error: ' + error.message, 'ai');
+                addMessage('I had trouble responding. Please try again! (J\'ai eu du mal à répondre.)', 'ai');
             }
 
             isWaitingForResponse = false;
+            input.disabled = false;
+            document.getElementById('sendBtn').disabled = false;
+            input.focus();
         }
 
         function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
+            if (e.key === 'Enter' && !isWaitingForResponse) sendMessage();
         }
 
         function goBack() {
